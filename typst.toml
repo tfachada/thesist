@@ -1,6 +1,6 @@
 [package]
 name = "thesist"
-version = "0.1.0"
+version = "0.1.1"
 entrypoint = "src/layout.typ"
 authors = ["Tomás Fachada <https://github.com/tfachada>"]
 license = "MIT"
