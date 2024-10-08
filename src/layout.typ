@@ -7,6 +7,7 @@
   title: none,
   subtitle: none,
   author: none,
+  string-degree: none,
   degree: none,
   supervisor: none,
   co-supervisor: none,
@@ -71,6 +72,9 @@
     STRING_GLOSSARY = "Glossário"
   }
   
+  if string-degree != none {
+    STRING_DEGREE = string-degree
+  }
   
   /* TITLE PAGE */
   
@@ -117,22 +121,24 @@
   
     v(1cm)
   
-    text(14pt, strong(STRING_COMMITTEE))
-  
-    text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
-    text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
-  
-    if committee-members.at(1) == none {
-      text(12pt, "\n" + STRING_MEMBER)
-    }
-    else{
-      text(12pt, "\n" + STRING_MEMBERS)
-    }
-    text(12pt, committee-members.at(0))
-    if committee-members.at(1) != none {
-      text(12pt, "\n" + committee-members.at(1))
-      if committee-members.at(2) != none {
-        text(12pt, "\n" + committee-members.at(2))
+    if committee-members != none {
+      text(14pt, strong(STRING_COMMITTEE))
+      
+      text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
+      text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
+      
+      if committee-members.at(1) == none {
+        text(12pt, "\n" + STRING_MEMBER)
+      }
+      else{
+        text(12pt, "\n" + STRING_MEMBERS)
+      }
+      text(12pt, committee-members.at(0))
+      if committee-members.at(1) != none {
+        text(12pt, "\n" + committee-members.at(1))
+        if committee-members.at(2) != none {
+          text(12pt, "\n" + committee-members.at(2))
+        }
       }
     }
     
