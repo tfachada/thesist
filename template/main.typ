@@ -9,32 +9,32 @@
   lang: "en",
 
   cover-image: image("Images/default-cover.jpg", width: 95%),
-  
+
   title: "This is the Title of the Thesis and it is a very Big Title covering More than One Line",
-  
+
   subtitle: "This is the Thesis Subtitle if Necessary", // *
 
   author: "The Full Name of the Author Goes Here",
-  
+
   degree: "Name of the Degree Here",
-  
+
   supervisor: "Prof. Full Name of Supervisor",
 
   co-supervisor: "Prof. Full Name of Co-supervisor",    // *
 
   chairperson: "Prof. Full Name of the Chairperson",
-  
+
   committee-members: (
     "Prof. Full Name of First Committee Member",
     "Dr. Full Name of Second Committee Member",         // *
     "Eng. Full Name of Third Committee Member"          // *
   ),
-  
+
   date: "Month 20XX",
 
   // *- Define as "none" (without quotation marks) if unneeded
 
-  
+
   // Set to true to hide the pages with the lists of figures, tables, algorithms, code snippets or glossary terms
   // WARNING: Please make sure at the end that you are only hiding the ones that would otherwise be empty!
   hide-figure-list: false,
@@ -43,7 +43,7 @@
   hide-code-list: false,
   hide-glossary: false,
 
-  
+
   // Don't edit this array. It's used for communication with the package.
   // Don't add chapters here!
   included-content: (
@@ -54,7 +54,7 @@
     include("Beginning/Keywords-pt.typ"),
     include("Beginning/Glossary.typ")
   )
-  
+
 )
 
 // Add chapters here

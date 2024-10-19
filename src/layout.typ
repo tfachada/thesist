@@ -21,16 +21,16 @@
   included-content: (),
   body
 ) = {
-  
+
   /* BASIC DOCUMENT PROPERTIES */
-  
+
   set document(title: title)
   set page(margin: (2.5cm))
   set text(font: "TeX Gyre Heros", size: 10pt, lang: lang)
 
-  
+
   /* STRINGS BY LANGUAGE */
-  
+
   let STRING_DEGREE = "Thesis to obtain the Master of Science Degree in"
   let STRING_SUPERVISOR = "Supervisor: "
   let STRING_SUPERVISORS = "Supervisors: "
@@ -49,7 +49,7 @@
   let STRING_ALGORITHM = "Algorithm"
   let STRING_CODE = "Listing"
   let STRING_GLOSSARY = "Glossary"
-  
+
   if lang == "pt" {
     STRING_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
     STRING_SUPERVISOR = "Orientador: "
@@ -70,43 +70,43 @@
     STRING_CODE = "Código"
     STRING_GLOSSARY = "Glossário"
   }
-  
-  
+
+
   /* TITLE PAGE */
-  
+
   align(center,{
-  
+
     align(left, image("IST.png", width: 30%))
-  
+
     v(1cm)
-    
+
     if cover-image != none {
       cover-image
     }
     else {
       v(2cm)
     }
-  
+
     v(1cm)
-    
+
     text(16pt, strong(title))
-  
+
     if subtitle != none{
       text(14pt, "\n\n" + subtitle)
     }
-  
+
     v(1cm)
-  
+
     text(14pt, strong(author))
-    
+
     v(1cm)
-  
+
     text(12pt, STRING_DEGREE)
-  
+
     text(16pt, "\n\n" + strong(degree))
-  
+
     v(1cm)
-  
+
     if co-supervisor == none {
       text(12pt, STRING_SUPERVISOR + supervisor)
     }
@@ -114,14 +114,14 @@
       text(12pt, STRING_SUPERVISORS + supervisor)
       text(12pt, "\n" + co-supervisor)
     }
-  
+
     v(1cm)
-  
+
     text(14pt, strong(STRING_COMMITTEE))
-  
+
     text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
     text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
-  
+
     if committee-members.at(1) == none {
       text(12pt, "\n" + STRING_MEMBER)
     }
@@ -135,14 +135,14 @@
         text(12pt, "\n" + committee-members.at(2))
       }
     }
-    
+
     align(bottom,
       text(14pt, strong(date))
     )
   })
-  
+
   pagebreak()
-  
+
 
   /* POST-COVER CONTENT FORM SETUP */
 
@@ -160,7 +160,7 @@
   show outline.entry: it => context {
     if it.element.has("kind") {
       let loc = it.element.location()
-      
+
       if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 {
         v(1em)
       }
@@ -209,7 +209,7 @@
     leading: 1.05em
   )
   set block(spacing: 2.5em)
-  show par: set block(spacing: 1.05em)
+  set par(spacing: 1.05em)
   set list(indent: 2em)
 
   // Size and line spacing of footnotes (.7 font size = 1 "line"; explanation above)
@@ -226,10 +226,10 @@
     footer: [
       #set align(center)
       #set text(9pt)
-      #counter(page).display("i")
+      #context counter(page).display("i")
     ]
   )
-  
+
   pagebreak()
 
   // Declaration page
@@ -241,7 +241,7 @@
   // Acknowledgments page (recall the included-content array from main.typ)
   heading(STRING_ACKNOWLEDGMENTS, numbering: none, outlined: false, bookmarked: true)
   included-content.at(0)
-  
+
   pagebreak(to: "odd")
 
   // English abstract and keywords
@@ -325,7 +325,7 @@
   show figure.caption: it => {
     let sup = if it.supplement != none [#it.supplement~]
     let num = if it.numbering != none {
-      it.counter.display(it.numbering)
+      context it.counter.display(it.numbering)
     }
     strong(sup + num + it.separator) + it.body
   }
@@ -335,7 +335,7 @@
     footer: [
       #set align(center)
       #set text(9pt)
-      #counter(page).display("1")
+      #context counter(page).display("1")
     ]
   )
   counter(page).update(1)
