@@ -6,6 +6,9 @@
 // Hide unused lists
 #show: thesis.with(
 
+  // Set to true if this is a PIC2 report. This will hide some of the cover page.
+  pic-mode: false,
+
   lang: "en",
 
   cover-image: image("Images/default-cover.jpg", width: 95%),
@@ -33,6 +36,12 @@
   date: "Month 20XX",
 
   // *- Define as "none" (without quotation marks) if unneeded
+
+
+  // Set to true to optionally hide acknowledgments or abstracts
+  // (don't do this unless it's a PIC2 report!)
+  hide-acknowledgments: false,
+  hide-abstract: false,
 
 
   // Set to true to hide the pages with the lists of figures, tables, algorithms, code snippets or glossary terms

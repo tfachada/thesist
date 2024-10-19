@@ -19,6 +19,9 @@
   hide-code-list: none,
   hide-glossary: none,
   included-content: (),
+  hide-acknowledgments: false,
+  hide-abstract: false,
+  pic-mode: false,
   body
 ) = {
 
@@ -101,7 +104,9 @@
 
     v(1cm)
 
-    text(12pt, STRING_DEGREE)
+    if not pic-mode {
+      text(12pt, STRING_DEGREE)
+    }
 
     text(16pt, "\n\n" + strong(degree))
 
@@ -117,22 +122,24 @@
 
     v(1cm)
 
-    text(14pt, strong(STRING_COMMITTEE))
+    if not pic-mode {
+      text(14pt, strong(STRING_COMMITTEE))
 
-    text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
-    text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
+      text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
+      text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
 
-    if committee-members.at(1) == none {
-      text(12pt, "\n" + STRING_MEMBER)
-    }
-    else{
-      text(12pt, "\n" + STRING_MEMBERS)
-    }
-    text(12pt, committee-members.at(0))
-    if committee-members.at(1) != none {
-      text(12pt, "\n" + committee-members.at(1))
-      if committee-members.at(2) != none {
-        text(12pt, "\n" + committee-members.at(2))
+      if committee-members.at(1) == none {
+        text(12pt, "\n" + STRING_MEMBER)
+      }
+      else{
+        text(12pt, "\n" + STRING_MEMBERS)
+      }
+      text(12pt, committee-members.at(0))
+      if committee-members.at(1) != none {
+        text(12pt, "\n" + committee-members.at(1))
+        if committee-members.at(2) != none {
+          text(12pt, "\n" + committee-members.at(2))
+        }
       }
     }
 
@@ -239,28 +246,30 @@
   pagebreak(to: "odd")
 
   // Acknowledgments page (recall the included-content array from main.typ)
-  heading(STRING_ACKNOWLEDGMENTS, numbering: none, outlined: false, bookmarked: true)
-  included-content.at(0)
+  if not hide-acknowledgments {
+    heading(STRING_ACKNOWLEDGMENTS, numbering: none, outlined: false, bookmarked: true)
+    included-content.at(0)
+    pagebreak(to: "odd")
+  }
 
-  pagebreak(to: "odd")
+  // Abstracts and keywords
+  if not hide-abstract {
+    heading("Abstract", numbering: none, outlined: false, bookmarked: true)
+    included-content.at(1)
+    v(1cm)
+    heading("Keywords", level: 2, numbering: none, outlined: false)
+    included-content.at(2)
 
-  // English abstract and keywords
-  heading("Abstract", numbering: none, outlined: false, bookmarked: true)
-  included-content.at(1)
-  v(1cm)
-  heading("Keywords", level: 2, numbering: none, outlined: false)
-  included-content.at(2)
+    pagebreak(to: "odd")
 
-  pagebreak(to: "odd")
+    heading("Resumo", numbering: none, outlined: false, bookmarked: true)
+    included-content.at(3)
+    v(1cm)
+    heading("Palavras Chave", level: 2, numbering: none, outlined: false)
+    included-content.at(4)
 
-  // Portuguese abstract and keywords
-  heading("Resumo", numbering: none, outlined: false, bookmarked: true)
-  included-content.at(3)
-  v(1cm)
-  heading("Palavras Chave", level: 2, numbering: none, outlined: false)
-  included-content.at(4)
-
-  pagebreak(to: "odd")
+    pagebreak(to: "odd")
+  }
 
   // Outlines
   {
