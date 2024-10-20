@@ -4,8 +4,7 @@
 
 // Optionally import more packages, depending on the chapter's needs. In the case of this chapter, we will use these:
 #import "@preview/codly:1.0.0": *
-#import "@preview/algorithmic:0.1.0"
-#import algorithmic: algorithm
+#import "@preview/lovelace:0.3.0": *
 // Check Typst Universe to look for new packages you might need, and always read their description page to know how to handle them.
 
 = A quick guide to using this template
@@ -27,7 +26,7 @@ This is a simple image call:
   caption: [An image]
 )<example_simple_image>
 
-This is @example_simple_image. In order to index it, we need to always wrap it in a `figure()` call. Indexing all the image calls in the thesis is mandatory!
+In order to index @example_simple_image, we need to *always* wrap it in a `figure()` call and give it a `caption`. Indexing all the image calls in the thesis is mandatory!
 
 *Note:* If you want to draw images using Typst packages like #link("https://typst.app/universe/package/cetz")[CeTZ], you can still index them as if they were normal images, by wrapping them in a `figure()` call. You may have to manually specify that figure's `kind` parameter as `image` (_no quotation marks_), but Typst usually detects that automatically.
 
@@ -43,7 +42,7 @@ The first function of this thesis package that will be presented here is `flex-c
   )
 )<example_flex_caption>
 
-Look now at the image index back at the beginning of the thesis, and see the description @example_flex_caption has in there. Instead of it being cluttered with this long caption, it has the short version in there. Might be useful!
+Look now at the image index back at the beginning of the thesis, and see the caption @example_flex_caption has in there. Instead of it being cluttered with this long caption, it has the short version in there. Might be useful!
 
 === Tables
 
@@ -85,6 +84,7 @@ Or use an imported package which function call will be interpreted by `figure` a
 )[
   // This show rule would normally be at the top of the document, but putting it here to prevent it from affecting other examples
   #show: codly-init.with()
+
   #codly(
     languages: (
       rust: (
@@ -101,7 +101,7 @@ Or use an imported package which function call will be interpreted by `figure` a
   ```
 ]
 
-*Note:* This is just an example. To know how to use a certain package to its full extent, be sure to read its documentation.
+*Note:* This is just an example. To know how to use a certain package to its full extent, including any that is used in this guide, be sure to read its documentation.
 
 === Algorithms
 
@@ -120,40 +120,28 @@ You can either define an algorithm with `raw text`:
     ...
     N: You get stuff
     ```
-    #v(1em)
   ]
 )
 
-Or use a package like #link("https://typst.app/universe/package/algorithmic")[`algorithmic`] to make it fancier:
+Or use a package like #link("https://typst.app/universe/package/lovelace")[`lovelace`] to make it fancier:
 
 #figure(
   kind: "algorithm",
   caption: [A very smart algorithm]
 )[
-  #align(left,
-    algorithm({
-      import algorithmic: *
-      Function("Binary-Search", args: ("A", "n", "v"), {
-        Cmt[Initialize the search range]
-        Assign[$l$][$1$]
-        Assign[$r$][$n$]
-        State[]
-        While(cond: $l <= r$, {
-          Assign([mid], FnI[floor][$(l + r)/2$])
-          If(cond: $A ["mid"] < v$, {
-            Assign[$l$][$m + 1$]
-          })
-          ElsIf(cond: [$A ["mid"] > v$], {
-            Assign[$r$][$m - 1$]
-          })
-          Else({
-            Return[$m$]
-          })
-        })
-        Return[*null*]
-      })
-    })
-  )
+  #pseudocode-list[
+    + do something
+    + do something else
+    + *while* still something to do
+      + do even more
+      + *if* not done yet *then*
+        + wait a bit
+        + resume working
+      + *else*
+        + go home
+      + *end*
+    + *end*
+  ]
 ]
 
 === Subfigures
@@ -174,7 +162,7 @@ This is `subfigure-grid` in action:
   ), <sub-right-example>,
   align: top,
   columns: (1fr, 1fr),
-  caption: [A figure composed of two sub figures],
+  caption: [A figure composed of two subfigures],
   label: <subfigure-grid-example>,
 )
 
@@ -214,12 +202,12 @@ Some example references are #gls("ist"), #gls("mu_0"), #glspl("potato") and #gls
 
 == Using the Bibliography
 
-Simply reference the bibliography items in the same way you would do for figures. Like this. @Nobody06
+Simply reference the bibliography items in the same way you would do for figures. Like this: @Madje_Typst Paste LaTeX-style references in `refs.bib`, or switch to a `.yaml` file based on Typst's native format if you want.
 
 == Afterword
 
-You can keep this file in the project while removing it from `main.typ` if you want to keep it as a reference when you begin the thesis writing.
+You can keep this file in the project while removing it from `main.typ` if you want to keep it as a reference.
 
-Keep in mind that this template may receive new features in the future; this will be influenced, in part, by the evolution of both the package ecosystem and Typst itself. You can always check for updates and update the package in your document. Instructions will be given on the template's page if you need to take any extra steps besides just changing the version in your import statements.
+Keep in mind that this template may receive new features in the future; this will be influenced, in part, by the evolution of both the package ecosystem and Typst itself. You can always check for updates and update the package in your document. Instructions will be given on the template's changelog if you need to take any extra steps besides just changing the version in your import statements.
 
 *Feel free to contribute to this package's repository if you so wish.*
