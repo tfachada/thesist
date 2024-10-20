@@ -204,6 +204,10 @@
   // Optional new figure type
   show figure.where(kind: "algorithm"): set figure(supplement: STRING_ALGORITHM)
 
+  // Put captions on top for non-image figures
+  set figure.caption(position: top)
+  show figure.where(kind: image): set figure.caption(position: bottom)
+
   // Color of both normal and reference links
   show link: set text(rgb("696969"))
   show ref: set text(rgb("696969"))
