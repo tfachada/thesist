@@ -4,6 +4,12 @@ ThesIST (pronounced "desist") is an unofficial Master's thesis template for Inst
 
 This template fully meets the official formatting requirements as outlined [here](https://tecnico.ulisboa.pt/files/2021/09/guia-disserta-o-mestrado.pdf), and also attempts to follow most unwritten conventions. Regardless, you can be on the lookout for things you may want to see added.
 
+PIC2 reports are also supported. However, some conventions for these may vary with the supervisors, so please check with them if anything needs to be changed.
+
+## Changelogs
+
+The changelogs for each new version are available on [the Releases page](https://github.com/tfachada/thesist/releases). Make sure to check the latest one(s) whenever you update the imported `thesist` version.
+
 ## Usage
 
 If you are in the Typst web app, simply click on "Start from template" and pick this template.
