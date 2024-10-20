@@ -9,15 +9,15 @@
   }
 
   subpar.grid(
-    
+
     numbering: super => numbering(numbering-format, counter(heading).get().first(), super),
-    
+
     numbering-sub-ref: (super, sub) => numbering(numbering-format+"a", counter(heading).get().first(), super, sub),
-    
+
     ..args
-    
+
   )
-  
+
 }
 
 
