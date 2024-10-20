@@ -148,7 +148,7 @@
     )
   })
 
-  pagebreak()
+  pagebreak(to: "odd")
 
 
   /* POST-COVER CONTENT FORM SETUP */
@@ -230,8 +230,6 @@
 
 
   /* POST-COVER CONTENT */
-
-  pagebreak()
 
   // Initial page numbering
   set page(
