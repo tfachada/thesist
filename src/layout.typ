@@ -231,8 +231,9 @@
 
   /* POST-COVER CONTENT */
 
+  pagebreak()
+
   // Initial page numbering
-  counter(page).update(0)
   set page(
     footer: [
       #set align(center)
@@ -240,8 +241,7 @@
       #context counter(page).display("i")
     ]
   )
-
-  pagebreak()
+  counter(page).update(1)
 
   // Declaration page
   heading(STRING_DECLARATION_TITLE, numbering: none, outlined: false)
