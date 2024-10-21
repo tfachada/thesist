@@ -8,7 +8,7 @@ PIC2 reports are also supported. However, some conventions for these may vary wi
 
 ## Changelogs
 
-The changelogs for each new version are available on [the Releases page](https://github.com/tfachada/thesist/releases). Make sure to check the latest one(s) whenever you update the imported `thesist` version.
+The changelogs of new versions are available on [the Releases page](https://github.com/tfachada/thesist/releases). Make sure to check the latest one(s) whenever you update the imported `thesist` version.
 
 ## Usage
 
