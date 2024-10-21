@@ -1,4 +1,4 @@
-#import "@preview/thesist:0.1.0": flex-caption, subfigure-grid
+#import "@preview/thesist:0.2.0": flex-caption, subfigure-grid
 #import "@preview/glossarium:0.5.0": gls, glspl
 
 = Another appendix

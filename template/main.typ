@@ -1,4 +1,4 @@
-#import "@preview/thesist:0.1.0": thesis, set-figure-numbering
+#import "@preview/thesist:0.2.0": thesis, set-figure-numbering
 
 /* INIT THESIS */
 // Set language to en/pt

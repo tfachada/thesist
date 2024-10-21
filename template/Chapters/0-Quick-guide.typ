@@ -1,5 +1,5 @@
 // It's recommended to always import these!
-#import "@preview/thesist:0.1.0": flex-caption, subfigure-grid
+#import "@preview/thesist:0.2.0": flex-caption, subfigure-grid
 #import "@preview/glossarium:0.5.0": gls, glspl
 
 // Optionally import more packages, depending on the chapter's needs. In the case of this chapter, we will use these:
