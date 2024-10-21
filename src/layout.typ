@@ -51,7 +51,6 @@
   let STRING_OUTLINE_CODE = "Listings"
   let STRING_ALGORITHM = "Algorithm"
   let STRING_CODE = "Listing"
-  let STRING_GLOSSARY = "Glossary"
 
   if lang == "pt" {
     STRING_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
@@ -71,7 +70,6 @@
     STRING_OUTLINE_CODE = "Lista de trechos de Código"
     STRING_ALGORITHM = "Algoritmo"
     STRING_CODE = "Código"
-    STRING_GLOSSARY = "Glossário"
   }
 
 
@@ -324,7 +322,6 @@
     pagebreak(to: "odd")
     {
       set heading(numbering: none, outlined: false, bookmarked: true)
-      heading(STRING_GLOSSARY)
       included-content.at(5)
     }
   }

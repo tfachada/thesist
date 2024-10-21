@@ -9,14 +9,15 @@ Add your glossary terms below!
 
   - If you don't specify a plural/longplural form, #gspl() will just add an s in case you call it;
 
-  - You can create more than one glossary of this type if you want! Just make a new array, and then register and print it as well. Remember to add a title before it.
+  - Terms with a long form will be shown just as their short form from the second time on.
 
 For any doubts, check the page of the imported package:
 https://github.com/typst-community/glossarium
 */
-#let entry-list = (
 
-  // Terms you add in this file need to be referenced to show up, unless you uncomment this line:
+#let main-glossary = (
+
+  // Terms you add in glossaries need to be referenced to show up, unless you uncomment this line:
   // show-all: true,
 
   (
@@ -24,38 +25,46 @@ https://github.com/typst-community/glossarium
       key: "potato",
       short: "potato",
       plural: "potatoes",
-      description: "A tuber that you can eat."
+      description: "An edible tuber"
     ),
+  )
+)
 
-
-    // You can add categories with "group:"
-
-    // ACRONYMS GROUP
+#let acronyms-glossary = (
+  (
     (
       key: "ist",
       short: "IST",
-      long: "Instituto Superior Técnico",
-      group: "Acronyms"
+      long: "Instituto Superior Técnico"
     ),
 
     (
       key: "dm",
       short: "DM",
       long: "Diagonal Matrix",
-      longplural: "diagonal matrices",
-      group: "Acronyms"
-    ),
-
-    // SYMBOLS GROUP
-    (
-      key: "mu_0",
-      short: $mu_0$,
-      description: "Standard magnetic permeability.",
-      group: "Symbols"
+      longplural: "diagonal matrices"
     ),
   )
 )
 
-#register-glossary(entry-list)
+#let symbols-glossary = (
+  (
+    (
+      key: "mu_0",
+      short: $mu_0$,
+      description: "Standard magnetic permeability"
+    ),
+  )
+)
 
-#print-glossary(entry-list)
+= Glossary
+#register-glossary(main-glossary)
+#print-glossary(main-glossary)
+
+== Acronyms
+#register-glossary(acronyms-glossary)
+#print-glossary(acronyms-glossary)
+
+== Symbols
+#register-glossary(symbols-glossary)
+#print-glossary(symbols-glossary)

@@ -198,7 +198,7 @@ $
 
 This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[`glossarium`] package. To reference glossary entries, you use the `#gls()` and `#glspl()` commands, depending on whether you want to write the singular or the plural form.
 
-Some example references are #gls("ist"), #gls("mu_0"), #glspl("potato") and #glspl("dm"). Glossary entries are set up in the `Glossary.typ` file, which guides you on how to manage entries.
+Some example references are #gls("mu_0"), #glspl("potato"), #glspl("dm") and #gls("ist"). The latter two become just #glspl("dm") and #gls("ist") after their first usage. Glossary entries are set up in the `Glossary.typ` file, which guides you on how to manage entries.
 
 == Using the Bibliography
 
