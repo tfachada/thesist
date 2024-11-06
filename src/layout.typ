@@ -22,6 +22,7 @@
   hide-acknowledgments: false,
   hide-abstract: false,
   pic-mode: false,
+  string-degree: none,
   body
 ) = {
 
@@ -72,6 +73,9 @@
     STRING_CODE = "Código"
   }
 
+  if string-degree != none {
+    STRING_DEGREE = string-degree
+  }
 
   /* TITLE PAGE */
 
@@ -102,9 +106,7 @@
 
     v(1cm)
 
-    if not pic-mode {
-      text(12pt, STRING_DEGREE)
-    }
+    text(12pt, STRING_DEGREE)
 
     text(16pt, "\n\n" + strong(degree))
 
