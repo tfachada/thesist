@@ -208,9 +208,6 @@
   set figure.caption(position: top)
   show figure.where(kind: image): set figure.caption(position: bottom)
 
-  // Set the default placement for figures to "auto" (preventing white space in the document)
-  set figure(placement: auto)
-
   // Color of both normal and reference links
   show link: set text(rgb("696969"))
   show ref: set text(rgb("696969"))
