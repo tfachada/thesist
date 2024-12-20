@@ -195,6 +195,7 @@
 
   // Gap between figure and caption
   set figure(gap: 1em)
+  show figure.where(kind: image): set figure(gap: 1.5em)
 
   // Better Portuguese name for listings
   show figure.where(kind: raw): set figure(supplement: STRING_CODE)
