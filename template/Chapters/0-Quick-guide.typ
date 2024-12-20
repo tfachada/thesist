@@ -58,7 +58,7 @@ Tables also have to be indexed. Although they are not figures in the usual sense
   caption: [A table]
 )
 
-Typst automatically detects that this is a different type of `picture`, and as such calls it "Table" instead of "Figure" and numbers it differently.
+Typst automatically detects that this is a different type of `figure`, and as such calls it "Table" instead of "Figure" and numbers it differently.
 
 === Code snippets
 
@@ -146,7 +146,7 @@ Or use a package like #link("https://typst.app/universe/package/lovelace")[`love
 
 === Subfigures
 
-Subfigures are implemented in this template via the function `subfigure-grid`. This is a slightly modified version of the `grid` function of the #link("https://typst.app/universe/package/subpar")[`subpar`] package for subfigures. The modifications allow it to work with the numbering used by figures in this thesis.
+Subfigures are implemented in this template via the function `subfigure-grid`. This is a slightly modified version of the `grid` function of the #link("https://typst.app/universe/package/subpar")[`subpar`] package for subfigures. The modifications allow it to work with the numbering used by figures in this thesis format.
 
 This is `subfigure-grid` in action:
 
@@ -158,7 +158,7 @@ This is `subfigure-grid` in action:
   ), <sub-left-example>,
   figure(
     image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
-    caption: [An image on the right.#v(1em)]
+    caption: [An image on the right.]
   ), <sub-right-example>,
   align: top,
   columns: (1fr, 1fr),
@@ -168,11 +168,7 @@ This is `subfigure-grid` in action:
 
 Above in @subfigure-grid-example, we see a figure which is composed of two other figures, namely @sub-left-example and @sub-right-example.
 
-*Important note:* Subfigures are still an experimental feature. As such, there are two things to keep an eye for if you use them:
-
-- If the subfigures or their captions aren't positioned in the way you want, try messing with the `align` parameter and `#v()` spacers above or below text. This was done in @subfigure-grid-example.
-
-- Subfigure grids, contrary to other figures, don't show up with the correct numbering by default (check this template's homepage for more details on why). As such, you will have to manually specify whether the figure is inside an appendix or not, with the `in-appendix` argument.
+*Important note:* Since subfigures are still an experimental feature, subfigure grids, contrary to other figures, don't show up with the correct numbering by default (check this template's homepage for more details on why). As such, you will have to manually specify whether the figure is inside an appendix or not, with the `in-appendix` argument.
 
 == A note about equations
 

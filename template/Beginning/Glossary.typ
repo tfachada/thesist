@@ -9,17 +9,15 @@ Add your glossary terms below!
 
   - If you don't specify a plural/longplural form, #gspl() will just add an s in case you call it;
 
-  - Terms with a long form will be shown just as their short form from the second time on.
+  - Terms with a long form will be shown just as their short form from the second time on;
 
-For any doubts, check the page of the imported package:
+  - To show entries that weren't referenced yet, add argument "show-all: true" to #print-glossary().
+
+For any further doubts, check the page of the imported package:
 https://github.com/typst-community/glossarium
 */
 
 #let main-glossary = (
-
-  // Terms you add in glossaries need to be referenced to show up, unless you uncomment this line:
-  // show-all: true,
-
   (
     (
       key: "potato",
