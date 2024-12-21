@@ -14,8 +14,7 @@
 
     numbering-sub-ref: (super, sub) => numbering(numbering-format+"a", counter(heading).get().first(), super, sub),
 
-    // gap: 1.5em,
-    gap: 0em,
+    gap: 1.5em,
 
     ..args
 

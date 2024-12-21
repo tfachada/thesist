@@ -224,20 +224,6 @@
   set par(spacing: 1.05em)
   set list(indent: 2em)
 
-  // Indent the first line of a paragraph after a heading
-
-  show heading: it => {
-    it
-    ""
-    v(-1.78em)
-  }
-
-  show figure: it => {
-    it
-    ""
-    v(-1.78em)
-  }
-
   // Size and line spacing of footnotes (.7 font size = 1 "line"; explanation above)
   show footnote.entry: set text(size: 9pt)
   set footnote.entry(gap: .7*9pt)
