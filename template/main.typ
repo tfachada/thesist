@@ -77,7 +77,7 @@
 
 // Turn this code into a comment if you don't use appendices
 #pagebreak(to:"odd")
-#set heading(numbering: "A.1")
+#set heading(numbering: "A.1  ")
 #counter(heading).update(0)
 #show: set-figure-numbering.with(new-format: "A.1")
 

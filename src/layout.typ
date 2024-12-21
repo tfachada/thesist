@@ -152,11 +152,11 @@
   /* POST-COVER CONTENT FORM SETUP */
 
   // Set heading sizes and spacings
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1  ")
   show heading: set block(above: 2.2em, below: 1.5em)
   show heading.where(level: 1): set text(size: 20pt)
-  show heading.where(level: 2): set text(size: 16pt)
-  show heading.where(level: 3): set text(size: 14pt)
+  show heading.where(level: 2): set text(size: 14pt)
+  show heading.where(level: 3): set text(size: 12pt)
 
   // Bookmark outlines (indices) in the generated PDF
   show outline: set heading(bookmarked: true)
@@ -172,7 +172,7 @@
 
       show link: set text(rgb("000000"))
       link(loc,
-        box(it.body.children.at(2), width: 2.6em) // figure numbering
+        box(it.body.children.at(2), width: 2.6em) // figure number
         + it.body.children.slice(4).join()        // figure caption
         + box(it.fill, width: 1fr)
         + it.page
