@@ -1,5 +1,6 @@
 #import "figure-numbering.typ": *
 #import "utils.typ": *
+#import "@preview/minitoc:0.1.0": *
 
 #let thesis(
   lang: none,
@@ -22,6 +23,8 @@
   hide-acknowledgments: false,
   hide-abstract: false,
   pic-mode: false,
+  chapter-style: "fancy",
+  appendix-style: "simple",
   string-degree: none,
   body
 ) = {
@@ -54,6 +57,9 @@
   let STRING_CODE = "Listing"
   let STRING_CHAPTER = "Chapter"
   let STRING_APPENDIX = "Appendix"
+  if pic-mode {
+    STRING_DEGREE = "Integrated Project to obtain the Master of Science Degree in"
+  }
 
   if lang == "pt" {
     STRING_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
@@ -75,6 +81,9 @@
     STRING_CODE = "Código"
     STRING_CHAPTER = "Capítulo"
     STRING_APPENDIX = "Apêndice"
+    if pic-mode {
+      STRING_DEGREE = "Projeto Integrador para obtenção do grau de Mestre em"
+    }
   }
 
   if string-degree != none {
@@ -371,11 +380,50 @@
 
   // Set said heading style, using bibliography state variables
   show heading.where(level: 1): it => {
+    if it.numbering == none { return it }
+    pagebreak(to: "odd", weak: true)
     if before-refs.get() == true {
-      chapter-heading(chapter-type: STRING_CHAPTER, it)
+      if chapter-style == "simple" {
+        chapter-heading(chapter-type: STRING_CHAPTER, it)
+      }
+      else if chapter-style == "fancy" {
+        let chapter_outline = {
+          set text(size: 14pt)
+          line(length: 100%)
+          v(-6.7em)
+          minitoc(depth: 1, indent: false, title: STRING_OUTLINE, target: heading.where(level: 2, outlined: true))
+          v(-0.8em)
+          line(length: 100%)
+        }
+
+        {
+          set align(right+horizon)
+          {
+            set text(size: 6cm, font: "Tex Gyre Schola")
+            let selector = selector(heading).before(here())
+            let level = counter(selector)
+            level.display()
+          }
+          linebreak()
+          set text(size: 25pt)
+          it.body
+        }
+
+        align(bottom, chapter_outline)
+        pagebreak()
+      }
+      else {
+        it
+      }
+
     }
     else if after-refs.get() == true {
-      chapter-heading(chapter-type: STRING_APPENDIX, it)
+      if appendix-style == "simple" {
+        chapter-heading(chapter-type: STRING_APPENDIX, it)
+      }
+      else {
+        it
+      }
     }
     else {
       it
