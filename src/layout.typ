@@ -52,6 +52,8 @@
   let STRING_OUTLINE_CODE = "Listings"
   let STRING_ALGORITHM = "Algorithm"
   let STRING_CODE = "Listing"
+  let STRING_CHAPTER = "Chapter"
+  let STRING_APPENDIX = "Appendix"
 
   if lang == "pt" {
     STRING_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
@@ -71,6 +73,8 @@
     STRING_OUTLINE_CODE = "Lista de trechos de Código"
     STRING_ALGORITHM = "Algoritmo"
     STRING_CODE = "Código"
+    STRING_CHAPTER = "Capítulo"
+    STRING_APPENDIX = "Apêndice"
   }
 
   if string-degree != none {
@@ -154,11 +158,11 @@
   /* POST-COVER CONTENT FORM SETUP */
 
   // Set heading sizes and spacings
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1  ")
   show heading: set block(above: 2.2em, below: 1.5em)
-  show heading.where(level: 1): set text(size: 20pt)
-  show heading.where(level: 2): set text(size: 16pt)
-  show heading.where(level: 3): set text(size: 14pt)
+  show heading.where(level: 1): set text(size: 25pt)
+  show heading.where(level: 2): set text(size: 14pt)
+  show heading.where(level: 3): set text(size: 12pt)
 
   // Bookmark outlines (indices) in the generated PDF
   show outline: set heading(bookmarked: true)
@@ -174,7 +178,7 @@
 
       show link: set text(rgb("000000"))
       link(loc,
-        box(it.body.children.at(2), width: 2.6em) // figure numbering
+        box(it.body.children.at(2), width: 2.6em) // figure number
         + it.body.children.slice(4).join()        // figure caption
         + box(it.fill, width: 1fr)
         + it.page
@@ -331,6 +335,9 @@
 
   pagebreak(to: "odd")
 
+
+  /* FRONT MATTER ENDS HERE */
+
   // "Figure x:" in bold
   // (putting here because glossarium uses figure captions for the entries)
   show figure.caption: it => {
@@ -339,6 +346,40 @@
       context it.counter.display(it.numbering)
     }
     strong(sup + num + it.separator) + it.body
+  }
+
+  // Bibliography state variables
+  let before-refs = state("before-refs", true)
+  let after-refs = state("after-refs", false)
+  show bibliography: it => {
+    before-refs.update(false)
+    it
+    after-refs.update(true)
+  }
+
+  // Heading style for chapters and appendices
+  let chapter-heading(chapter-type: none, it) = {
+    grid(
+      rows: (2em, auto, 2em, auto, 1em),
+      [],
+      text(chapter-type + " " + counter(heading).display(), 21pt),
+      [],
+      it.body,
+      []
+    )
+  }
+
+  // Set said heading style, using bibliography state variables
+  show heading.where(level: 1): it => {
+    if before-refs.get() == true {
+      chapter-heading(chapter-type: STRING_CHAPTER, it)
+    }
+    else if after-refs.get() == true {
+      chapter-heading(chapter-type: STRING_APPENDIX, it)
+    }
+    else {
+      it
+    }
   }
 
   // Reset page numbering in Arabic numerals
