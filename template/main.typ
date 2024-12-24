@@ -48,6 +48,7 @@
 
   // Set the appendix heading style
   // Options:
+  //  - "fancy": Full page - <Appendix letter> + <appendix title>
   //  - "simple": Multi line - Appendix <appendix letter> + <appendix title>
   //  - "short": Single line - <appendix letter> + <appendix title>
   appendix-style: "simple",

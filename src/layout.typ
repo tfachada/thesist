@@ -167,7 +167,7 @@
   /* POST-COVER CONTENT FORM SETUP */
 
   // Set heading sizes and spacings
-  set heading(numbering: "1.1  ")
+  set heading(numbering: "1.1")
   show heading: set block(above: 2.2em, below: 1.5em)
   show heading.where(level: 1): set text(size: 25pt)
   show heading.where(level: 2): set text(size: 14pt)
@@ -400,13 +400,14 @@
           set align(right+horizon)
           {
             set text(size: 6cm, font: "Tex Gyre Schola")
-            let selector = selector(heading).before(here())
-            let level = counter(selector)
-            level.display()
+            h(3cm)
+            counter(heading).display()
           }
-          linebreak()
-          set text(size: 25pt)
-          it.body
+          {
+            linebreak()
+            set text(size: 25pt)
+            it.body
+          }
         }
 
         align(bottom, chapter_outline)
@@ -420,6 +421,23 @@
     else if after-refs.get() == true {
       if appendix-style == "simple" {
         chapter-heading(chapter-type: STRING_APPENDIX, it)
+      } else if appendix-style == "fancy" {
+
+        {
+          set align(right+horizon)
+          {
+            set text(size: 6cm, font: "Tex Gyre Schola")
+            h(3cm)
+            counter(heading).display()
+          }
+          {
+            linebreak()
+            set text(size: 25pt)
+            it.body
+          }
+        }
+        pagebreak()
+
       }
       else {
         it
