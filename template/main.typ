@@ -11,7 +11,9 @@
 
   lang: "en",
 
+  // If you want to use Taguspark Campus cover image, uncomment the line bellow and uncomment the next one
   cover-image: image("Images/default-cover.jpg", width: 95%),
+  // cover-image: image("Images/cover-tagus.png", width: 95%, height: 4.5cm),
 
   title: "This is the Title of the Thesis and it is a very Big Title covering More than One Line",
 
@@ -37,6 +39,19 @@
 
   // *- Define as "none" (without quotation marks) if unneeded
 
+  // Set the chapter heading style
+  // Options:
+  //  - "fancy": Full page - <chapter number> + <chapter title> + <chapter outline>
+  //  - "simple": Multi line - Chapter <chapter number> + <chapter title>
+  //  - "short": Single line - <chapter number> + <chapter title>
+  chapter-style: "fancy",
+
+  // Set the appendix heading style
+  // Options:
+  //  - "fancy": Full page - <Appendix letter> + <appendix title>
+  //  - "simple": Multi line - Appendix <appendix letter> + <appendix title>
+  //  - "short": Single line - <appendix letter> + <appendix title>
+  appendix-style: "simple",
 
   // Set to true to optionally hide acknowledgments or abstracts
   // (don't do this unless it's a PIC2 report!)
@@ -68,9 +83,7 @@
 
 // Add chapters here
 #include("Chapters/0-Quick-guide.typ")
-#pagebreak(to: "odd")
 #include("Chapters/1-Introduction.typ")
-#pagebreak(to: "odd")
 
 // Bibliography (use either .bib or .yaml; style is usually ieee)
 #bibliography("refs.bib", style: "ieee")
@@ -86,7 +99,6 @@
 //   1- The pagebreak after the last appendix isn't needed.
 //   2- If you want to use subfigures, don't forget to use in-appendix: true
 #include("Chapters/Appendix-A.typ")
-#pagebreak(to: "odd")
 #include("Chapters/Appendix-B.typ")
 
 /* DOCUMENT ENDS HERE */
