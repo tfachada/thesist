@@ -414,7 +414,7 @@
         pagebreak()
       }
       else {
-        it
+        counter(heading).display() + " - " + it.body
       }
 
     }
@@ -440,7 +440,7 @@
 
       }
       else {
-        it
+        counter(heading).display() + " - " + it.body
       }
     }
     else {
