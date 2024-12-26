@@ -6,12 +6,8 @@
 // Hide unused lists
 #show: thesis.with(
 
-  // Set to true if this is a PIC2 report. This will hide some of the cover page.
-  pic-mode: false,
-
   lang: "en",
 
-  // If you want to use Taguspark Campus as the cover image, comment the line below and uncomment the next one. Alternatively, you can use an image of your own, or just set to none.
   cover-image: image("Images/default-alameda.jpg", width: 95%),
   // cover-image: image("Images/default-taguspark.jpg", height: 4cm),
 
@@ -40,6 +36,23 @@
   // *- Define as "none" (without quotation marks) if unneeded
 
 
+  // PIC2-related settings:
+
+    // Set to true if this is a PIC2 report. This will change some of the cover page.
+    pic-mode: false,
+
+    // Used to edit the text right before the name of the degree. Only change this if the PIC mode default for some reason isn't good.
+    string-before-degree: none,
+
+    // Defines whether chapters should always start on an odd page. If you are writing a PIC2 report, check with your supervisor(s) if you have to set to false or not. If you are writing a thesis, leave it as true.
+    chapters-on-odd-pages: true,
+
+    // Set to true to optionally hide acknowledgments or abstracts
+    // (don't do this unless it's a PIC2 report!)
+    hide-acknowledgments: false,
+    hide-abstract: false,
+
+
   // Set the chapter heading style
   // Options:
   //  - "fancy": Full page - <chapter number> + <chapter title> + <chapter outline>
@@ -53,16 +66,6 @@
   //  - "simple": Multi line - Appendix <appendix letter> + <appendix title>
   //  - "short": Single line - <appendix letter> + <appendix title>
   appendix-style: "simple",
-
-
-  // Defines whether chapters should always start on an odd page. If you are writing a PIC report, check with your supervisor if you have to set to false or not. If you are writing a thesis, leave it as true.
-  chapters-on-odd-pages: true,
-
-
-  // Set to true to optionally hide acknowledgments or abstracts
-  // (don't do this unless it's a PIC2 report!)
-  hide-acknowledgments: false,
-  hide-abstract: false,
 
 
   // Set to true to hide the pages with the lists of figures, tables, algorithms, code snippets or glossary terms

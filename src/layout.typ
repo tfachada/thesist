@@ -25,8 +25,8 @@
   pic-mode: false,
   chapter-style: "fancy",
   appendix-style: "simple",
-  string-degree: none,
-  chapters-on-odd-pages: none,
+  string-before-degree: none,
+  chapters-on-odd-pages: true,
   body
 ) = {
 
@@ -39,7 +39,10 @@
 
   /* STRINGS BY LANGUAGE */
 
-  let STRING_DEGREE = "Thesis to obtain the Master of Science Degree in"
+  let STRING_BEFORE_DEGREE = "Thesis to obtain the Master of Science Degree in"
+  if pic-mode {
+    STRING_BEFORE_DEGREE = "Integrated Project to obtain the Master of Science Degree in"
+  }
   let STRING_SUPERVISOR = "Supervisor: "
   let STRING_SUPERVISORS = "Supervisors: "
   let STRING_COMMITTEE = "Examination Committee"
@@ -58,12 +61,12 @@
   let STRING_CODE = "Listing"
   let STRING_CHAPTER = "Chapter"
   let STRING_APPENDIX = "Appendix"
-  if pic-mode {
-    STRING_DEGREE = "Integrated Project to obtain the Master of Science Degree in"
-  }
 
   if lang == "pt" {
-    STRING_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
+    STRING_BEFORE_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
+    if pic-mode {
+      STRING_BEFORE_DEGREE = "Projeto Integrador para obtenção do grau de Mestre em"
+    }
     STRING_SUPERVISOR = "Orientador: "
     STRING_SUPERVISORS = "Orientadores: "
     STRING_COMMITTEE = "Júri"
@@ -82,13 +85,10 @@
     STRING_CODE = "Código"
     STRING_CHAPTER = "Capítulo"
     STRING_APPENDIX = "Apêndice"
-    if pic-mode {
-      STRING_DEGREE = "Projeto Integrador para obtenção do grau de Mestre em"
-    }
   }
 
-  if string-degree != none {
-    STRING_DEGREE = string-degree
+  if string-before-degree != none {
+    STRING_BEFORE_DEGREE = string-before-degree
   }
 
   /* TITLE PAGE */
@@ -120,7 +120,7 @@
 
     v(1cm)
 
-    text(12pt, STRING_DEGREE)
+    text(12pt, STRING_BEFORE_DEGREE)
 
     text(16pt, "\n\n" + strong(degree))
 
