@@ -302,13 +302,10 @@
   heading(STRING_DECLARATION_TITLE, numbering: none, outlined: false)
   text(STRING_DECLARATION_BODY)
 
-  pagebreak(to: "odd")
-
   // Acknowledgments page (recall the included-content array from main.typ)
   if not hide-acknowledgments {
     heading(STRING_ACKNOWLEDGMENTS, numbering: none, outlined: false, bookmarked: true)
     included-content.at(0)
-    pagebreak(to: "odd")
   }
 
   // Abstracts and keywords
@@ -318,22 +315,32 @@
     show heading.where(level: 2): set text(size: 21pt)
 
     // English
-    heading("Abstract", numbering: none, outlined: false, bookmarked: true)
-    included-content.at(1)
-    v(1cm)
-    heading("Keywords", level: 2, numbering: none, outlined: false)
-    included-content.at(2)
-
-    pagebreak(to: "odd")
+    let abstract-en = {
+      heading("Abstract", numbering: none, outlined: false, bookmarked: true)
+      included-content.at(1)
+      v(1cm)
+      heading("Keywords", level: 2, numbering: none, outlined: false)
+      included-content.at(2)
+    }
 
     // Portuguese
-    heading("Resumo", numbering: none, outlined: false, bookmarked: true)
-    included-content.at(3)
-    v(1cm)
-    heading("Palavras Chave", level: 2, numbering: none, outlined: false)
-    included-content.at(4)
+    let abstract-pt = {
+      heading("Resumo", numbering: none, outlined: false, bookmarked: true)
+      included-content.at(3)
+      v(1cm)
+      heading("Palavras Chave", level: 2, numbering: none, outlined: false)
+      included-content.at(4)
+    }
 
-    pagebreak(to: "odd")
+    if lang == "en" {
+      abstract-en
+      abstract-pt
+    }
+
+    else {
+      abstract-pt
+      abstract-en
+    }
   }
 
   // Outlines
@@ -352,7 +359,6 @@
   }
 
   if not hide-figure-list {
-    pagebreak(to: "odd")
     outline(
       title: STRING_OUTLINE_FIGURES,
       target: figure.where(kind: image)
@@ -360,7 +366,6 @@
   }
 
   if not hide-table-list {
-    pagebreak(to: "odd")
     outline(
       title: STRING_OUTLINE_TABLES,
       target: figure.where(kind: table)
@@ -368,7 +373,6 @@
   }
 
   if not hide-algorithm-list {
-    pagebreak(to: "odd")
     outline(
       title: STRING_OUTLINE_ALGORITHMS,
       target: figure.where(kind: "algorithm")
@@ -376,7 +380,6 @@
   }
 
   if not hide-code-list {
-    pagebreak(to: "odd")
     outline(
       title: STRING_OUTLINE_CODE,
       target: figure.where(kind: raw)
@@ -384,7 +387,6 @@
   }
 
   if not hide-glossary {
-    pagebreak(to: "odd")
     {
       set heading(numbering: none, outlined: false, bookmarked: true)
       included-content.at(5)
