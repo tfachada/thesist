@@ -20,13 +20,14 @@
   hide-code-list: none,
   hide-glossary: none,
   included-content: (),
+  pic-mode: false,
+  string-before-degree: none,
+  hide-committee: false,
   hide-acknowledgments: false,
   hide-abstract: false,
-  pic-mode: false,
+  chapters-on-odd-pages: true,
   chapter-style: "fancy",
   appendix-style: "simple",
-  string-before-degree: none,
-  chapters-on-odd-pages: true,
   body
 ) = {
 
@@ -136,7 +137,7 @@
 
     v(1cm)
 
-    if not pic-mode {
+    if not hide-committee {
       text(14pt, strong(STRING_COMMITTEE))
 
       text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
@@ -162,7 +163,12 @@
     )
   })
 
-  pagebreak(to: "odd", weak: true)
+  if chapters-on-odd-pages {
+    pagebreak(to: "odd", weak: true)
+  }
+  else {
+    pagebreak(weak: true)
+  }
 
 
   /* POST-COVER CONTENT FORM SETUP */
@@ -393,7 +399,12 @@
     }
   }
 
-  pagebreak(to: "odd", weak: true)
+  if chapters-on-odd-pages {
+    pagebreak(to: "odd", weak: true)
+  }
+  else {
+    pagebreak(weak: true)
+  }
 
 
   /* FRONT MATTER ENDS HERE */

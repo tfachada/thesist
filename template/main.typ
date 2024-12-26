@@ -4,6 +4,8 @@
 // Set language to en/pt
 // Setup title page
 // Hide unused lists
+// Pick heading styles
+// Further customizations available for PIC2 reports
 #show: thesis.with(
 
   lang: "en",
@@ -38,19 +40,22 @@
 
   // PIC2-related settings:
 
-    // Set to true if this is a PIC2 report. This will change some of the cover page.
+    // Set to true for the cover to say this is a PIC2 report.
     pic-mode: false,
 
     // Used to edit the text right before the name of the degree. Only change this if the PIC mode default for some reason isn't good.
     string-before-degree: none,
 
-    // Defines whether chapters should always start on an odd page. If you are writing a PIC2 report, check with your supervisor(s) if you have to set to false or not. If you are writing a thesis, leave it as true.
-    chapters-on-odd-pages: true,
-
-    // Set to true to optionally hide acknowledgments or abstracts
-    // (don't do this unless it's a PIC2 report!)
+    // Set to true to hide the committee, acknowledgments or abstracts if either is unneeded
+    // If you are writing a thesis, leave them all as false!
+    hide-committee: false,
     hide-acknowledgments: false,
     hide-abstract: false,
+
+    // Defines whether chapters should always start on an odd page.
+    // If you are writing a PIC2 report, check with your supervisor(s) if you have to set to false or not.
+    // If you are writing a thesis, always leave it as true!
+    chapters-on-odd-pages: true,
 
 
   // Set the chapter heading style
