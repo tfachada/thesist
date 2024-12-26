@@ -11,9 +11,9 @@
 
   lang: "en",
 
-  // If you want to use Taguspark Campus cover image, uncomment the line bellow and uncomment the next one
-  cover-image: image("Images/default-cover.jpg", width: 95%),
-  // cover-image: image("Images/cover-tagus.png", width: 95%, height: 4.5cm),
+  // If you want to use Taguspark Campus as the cover image, comment the line below and uncomment the next one. Alternatively, you can use an image of your own, or just set to none.
+  cover-image: image("Images/default-alameda.jpg", width: 95%),
+  // cover-image: image("Images/default-taguspark.jpg", height: 4cm),
 
   title: "This is the Title of the Thesis and it is a very Big Title covering More than One Line",
 
