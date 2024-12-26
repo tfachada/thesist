@@ -100,9 +100,7 @@
 #show: set-figure-numbering.with(new-format: "A.1")
 
 // Add appendices here
-// Notes:
-//   1- The pagebreak after the last appendix isn't needed.
-//   2- If you want to use subfigures, don't forget to use in-appendix: true
+// If you want to use subfigures, don't forget to use in-appendix: true
 #include("Chapters/Appendix-A.typ")
 #include("Chapters/Appendix-B.typ")
 
