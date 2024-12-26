@@ -61,10 +61,6 @@
 
 // Fancy heading style
 #let fancy-heading(title: none, it) = {
-  let chapter_outline = {
-    minitoc(depth: 1, indent: auto, title: title, target: heading.where(level: 2, outlined: true))
-  }
-
   {
     set align(right+horizon)
     {
@@ -75,11 +71,12 @@
     {
       set text(size: 25pt)
       linebreak()
-      v(1em)
+      v(1cm)
       it.body
     }
   }
-
-  align(bottom, chapter_outline)
+  align(bottom,
+    minitoc(depth: 1, indent: auto, title: title, target: heading.where(level: 2, outlined: true))
+  )
   pagebreak()
 }
