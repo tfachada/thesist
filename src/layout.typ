@@ -1,4 +1,5 @@
 #import "figure-numbering.typ": *
+#import "heading-styles.typ": *
 #import "utils.typ": *
 
 #let thesis(
@@ -25,6 +26,7 @@
   chapter-style: "fancy",
   appendix-style: "simple",
   string-degree: none,
+  chapters-on-odd-pages: none,
   body
 ) = {
 
@@ -171,6 +173,48 @@
   show heading.where(level: 1): set text(size: 25pt)
   show heading.where(level: 2): set text(size: 14pt)
   show heading.where(level: 3): set text(size: 12pt)
+
+  // Appendix state variable
+  let after-refs = state("after-refs", false)
+  show bibliography: it => {
+    it
+    after-refs.update(true)
+  }
+
+  // Set heading style for chapters/appendices, using the state variable
+  show heading.where(level: 1): it => {
+    if chapters-on-odd-pages == true {
+      pagebreak(to: "odd", weak: true)
+    }
+    else {
+      pagebreak(weak: true)
+    }
+    if it.numbering == none {
+      it
+    }
+    else if after-refs.get() == false {
+      if chapter-style == "simple" {
+        simple-heading(chapter-type: STRING_CHAPTER, it)
+      }
+      else if chapter-style == "fancy" {
+        fancy-heading(title: STRING_OUTLINE, it)
+      }
+      else {
+        short-heading(it)
+      }
+    }
+    else {
+      if appendix-style == "simple" {
+        simple-heading(chapter-type: STRING_APPENDIX, it)
+      }
+      else if appendix-style == "fancy" {
+        fancy-heading(title: STRING_OUTLINE, it)
+      }
+      else {
+        short-heading(it)
+      }
+    }
+  }
 
   // Bookmark outlines (indices) in the generated PDF
   show outline: set heading(bookmarked: true)
@@ -360,134 +404,6 @@
       context it.counter.display(it.numbering)
     }
     strong(sup + num + it.separator) + it.body
-  }
-
-  // Bibliography state variables
-  let before-refs = state("before-refs", true)
-  let after-refs = state("after-refs", false)
-  show bibliography: it => {
-    before-refs.update(false)
-    it
-    after-refs.update(true)
-  }
-
-  // Heading style for chapters and appendices
-  let chapter-heading(chapter-type: none, it) = {
-    grid(
-      rows: (2em, auto, 2em, auto, 1em),
-      [],
-      text(chapter-type + " " + counter(heading).display(), 21pt),
-      [],
-      it.body,
-      []
-    )
-  }
-
-  // Table of Contents for fancy heading style
-  let minitoc(
-    title: none,
-    target: heading.where(outlined: true),
-    depth: none,
-    indent: none,
-    fill: repeat([.]),
-  ) = {
-    if depth == none { depth = calc.inf }
-    context {
-      let loc = here()
-      let pre = query(selector(heading.where(outlined: true)).before(loc))
-      if pre == () { return outline(target: target, title: title, fill: fill, indent: indent) }
-      let after = pre.last()
-      let min_level = after.level
-      let max_level = min_level + depth
-      let elems = query(selector(heading.where(outlined: true)).after(loc))
-      let last_elem = none
-      for e in elems {
-        if e.level <= min_level { break }
-        last_elem = e
-      }
-      max_level = if max_level == calc.inf { calc.max(..elems.map(e => e.level)) } else { max_level }
-      if last_elem == none {
-        outline(target: selector(target).after(after.location()), depth: max_level)
-      } else {
-        outline(
-          target: selector(target).after(after.location()).before(last_elem.location()),
-          fill: fill,
-          title: title,
-          indent: indent,
-          depth: max_level,
-        )
-      }
-    }
-  }
-
-  // Set said heading style, using bibliography state variables
-  show heading.where(level: 1): it => {
-    if it.numbering == none { return it }
-    pagebreak(to: "odd", weak: true)
-    if before-refs.get() == true {
-      if chapter-style == "simple" {
-        chapter-heading(chapter-type: STRING_CHAPTER, it)
-      }
-      else if chapter-style == "fancy" {
-        let chapter_outline = {
-          set text(size: 14pt)
-          line(length: 100%)
-          v(-6.7em)
-          minitoc(depth: 1, indent: false, title: STRING_OUTLINE, target: heading.where(level: 2, outlined: true))
-          v(-0.8em)
-          line(length: 100%)
-        }
-
-        {
-          set align(right+horizon)
-          {
-            set text(size: 6cm, font: "Tex Gyre Schola")
-            h(3cm)
-            counter(heading).display()
-          }
-          {
-            linebreak()
-            set text(size: 25pt)
-            it.body
-          }
-        }
-
-        align(bottom, chapter_outline)
-        pagebreak()
-      }
-      else {
-        counter(heading).display() + " - " + it.body
-      }
-
-    }
-    else if after-refs.get() == true {
-      if appendix-style == "simple" {
-        chapter-heading(chapter-type: STRING_APPENDIX, it)
-      } else if appendix-style == "fancy" {
-
-        {
-          set align(right+horizon)
-          {
-            set text(size: 6cm, font: "Tex Gyre Schola")
-            h(3cm)
-            counter(heading).display()
-          }
-          {
-            linebreak()
-            set text(size: 25pt)
-            it.body
-          }
-        }
-        pagebreak()
-
-      }
-      else {
-        counter(heading).display() + " - " + it.body
-      }
-    }
-    else {
-      it
-    }
   }
 
   // Reset page numbering in Arabic numerals

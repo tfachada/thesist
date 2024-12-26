@@ -39,6 +39,7 @@
 
   // *- Define as "none" (without quotation marks) if unneeded
 
+
   // Set the chapter heading style
   // Options:
   //  - "fancy": Full page - <chapter number> + <chapter title> + <chapter outline>
@@ -52,6 +53,11 @@
   //  - "simple": Multi line - Appendix <appendix letter> + <appendix title>
   //  - "short": Single line - <appendix letter> + <appendix title>
   appendix-style: "simple",
+
+
+  // Defines whether chapters should always start on an odd page. If you are writing a PIC report, check with your supervisor if you have to set to false or not. If you are writing a thesis, leave it as true.
+  chapters-on-odd-pages: true,
+
 
   // Set to true to optionally hide acknowledgments or abstracts
   // (don't do this unless it's a PIC2 report!)
@@ -89,8 +95,7 @@
 #bibliography("refs.bib", style: "ieee")
 
 // Turn this code into a comment if you don't use appendices
-#pagebreak(to:"odd")
-#set heading(numbering: "A.1  ")
+#set heading(numbering: "A.1")
 #counter(heading).update(0)
 #show: set-figure-numbering.with(new-format: "A.1")
 
