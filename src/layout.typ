@@ -269,6 +269,11 @@
 
   // Abstracts and keywords
   if not hide-abstract {
+
+    // For the Keywords heading. Only applies in this scope.
+    show heading.where(level: 2): set text(size: 21pt)
+
+    // English
     heading("Abstract", numbering: none, outlined: false, bookmarked: true)
     included-content.at(1)
     v(1cm)
@@ -277,6 +282,7 @@
 
     pagebreak(to: "odd")
 
+    // Portuguese
     heading("Resumo", numbering: none, outlined: false, bookmarked: true)
     included-content.at(3)
     v(1cm)
