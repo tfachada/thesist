@@ -1,5 +1,6 @@
 #import "figure-numbering.typ": *
 #import "utils.typ": *
+#import "@preview/minitoc:0.1.0": *
 
 #let thesis(
   lang: none,
@@ -22,6 +23,9 @@
   hide-acknowledgments: false,
   hide-abstract: false,
   pic-mode: false,
+  chapter-style: "fancy",
+  appendix-style: "simple",
+  string-degree: none,
   body
 ) = {
 
@@ -53,6 +57,9 @@
   let STRING_CODE = "Listing"
   let STRING_CHAPTER = "Chapter"
   let STRING_APPENDIX = "Appendix"
+  if pic-mode {
+    STRING_DEGREE = "Integrated Project to obtain the Master of Science Degree in"
+  }
 
   if lang == "pt" {
     STRING_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
@@ -74,8 +81,14 @@
     STRING_CODE = "Código"
     STRING_CHAPTER = "Capítulo"
     STRING_APPENDIX = "Apêndice"
+    if pic-mode {
+      STRING_DEGREE = "Projeto Integrador para obtenção do grau de Mestre em"
+    }
   }
 
+  if string-degree != none {
+    STRING_DEGREE = string-degree
+  }
 
   /* TITLE PAGE */
 
@@ -106,9 +119,7 @@
 
     v(1cm)
 
-    if not pic-mode {
-      text(12pt, STRING_DEGREE)
-    }
+    text(12pt, STRING_DEGREE)
 
     text(16pt, "\n\n" + strong(degree))
 
@@ -156,7 +167,7 @@
   /* POST-COVER CONTENT FORM SETUP */
 
   // Set heading sizes and spacings
-  set heading(numbering: "1.1  ")
+  set heading(numbering: "1.1")
   show heading: set block(above: 2.2em, below: 1.5em)
   show heading.where(level: 1): set text(size: 25pt)
   show heading.where(level: 2): set text(size: 14pt)
@@ -369,11 +380,68 @@
 
   // Set said heading style, using bibliography state variables
   show heading.where(level: 1): it => {
+    if it.numbering == none { return it }
+    pagebreak(to: "odd", weak: true)
     if before-refs.get() == true {
-      chapter-heading(chapter-type: STRING_CHAPTER, it)
+      if chapter-style == "simple" {
+        chapter-heading(chapter-type: STRING_CHAPTER, it)
+      }
+      else if chapter-style == "fancy" {
+        let chapter_outline = {
+          set text(size: 14pt)
+          line(length: 100%)
+          v(-6.7em)
+          minitoc(depth: 1, indent: false, title: STRING_OUTLINE, target: heading.where(level: 2, outlined: true))
+          v(-0.8em)
+          line(length: 100%)
+        }
+
+        {
+          set align(right+horizon)
+          {
+            set text(size: 6cm, font: "Tex Gyre Schola")
+            h(3cm)
+            counter(heading).display()
+          }
+          {
+            linebreak()
+            set text(size: 25pt)
+            it.body
+          }
+        }
+
+        align(bottom, chapter_outline)
+        pagebreak()
+      }
+      else {
+        counter(heading).display() + " - " + it.body
+      }
+
     }
     else if after-refs.get() == true {
-      chapter-heading(chapter-type: STRING_APPENDIX, it)
+      if appendix-style == "simple" {
+        chapter-heading(chapter-type: STRING_APPENDIX, it)
+      } else if appendix-style == "fancy" {
+
+        {
+          set align(right+horizon)
+          {
+            set text(size: 6cm, font: "Tex Gyre Schola")
+            h(3cm)
+            counter(heading).display()
+          }
+          {
+            linebreak()
+            set text(size: 25pt)
+            it.body
+          }
+        }
+        pagebreak()
+
+      }
+      else {
+        counter(heading).display() + " - " + it.body
+      }
     }
     else {
       it
