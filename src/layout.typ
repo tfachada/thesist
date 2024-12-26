@@ -162,7 +162,7 @@
     )
   })
 
-  pagebreak(to: "odd")
+  pagebreak(to: "odd", weak: true)
 
 
   /* POST-COVER CONTENT FORM SETUP */
@@ -393,7 +393,7 @@
     }
   }
 
-  pagebreak(to: "odd")
+  pagebreak(to: "odd", weak: true)
 
 
   /* FRONT MATTER ENDS HERE */
