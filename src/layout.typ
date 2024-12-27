@@ -28,7 +28,7 @@
   hide-algorithm-list: false,
   hide-code-list: false,
   chapters-on-odd-pages: true,
-  included-content: (),
+  included-content: none,
   body
 ) = {
 
