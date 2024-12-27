@@ -203,7 +203,7 @@
         simple-heading(chapter-type: STRING_CHAPTER, it)
       }
       else if chapter-style == "fancy" {
-        fancy-heading(title: STRING_OUTLINE, it)
+        fancy-heading(outline-title: STRING_OUTLINE, it)
       }
       else {
         short-heading(it)
@@ -214,7 +214,7 @@
         simple-heading(chapter-type: STRING_APPENDIX, it)
       }
       else if appendix-style == "fancy" {
-        fancy-heading(title: STRING_OUTLINE, it)
+        fancy-heading(outline-title: STRING_OUTLINE, it)
       }
       else {
         short-heading(it)
