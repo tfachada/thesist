@@ -108,7 +108,6 @@
 #show: set-figure-numbering.with(new-format: "A.1")
 
 // Add appendices here
-// If you want to use subfigures, don't forget to use in-appendix: true
 #include("Chapters/Appendix-A.typ")
 #include("Chapters/Appendix-B.typ")
 

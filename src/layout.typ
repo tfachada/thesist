@@ -181,7 +181,8 @@
   show heading.where(level: 3): set text(size: 12pt)
 
   // Appendix state variable
-  let after-refs = state("after-refs", false)
+  let after-refs = state("after-refs", none)
+  after-refs.update(false)
   show bibliography: it => {
     it
     after-refs.update(true)
@@ -247,7 +248,7 @@
   }
 
   // Allow a caption in an outline to receive different treatment from the original (see flex-caption in utils.typ)
-  let in-outline = state("in-outline", false)
+  let in-outline = state("in-outline", none)
   show outline: it => {
     in-outline.update(true)
     it

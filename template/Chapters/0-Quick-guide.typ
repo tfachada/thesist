@@ -151,7 +151,6 @@ Subfigures are implemented in this template via the function `subfigure-grid`. T
 This is `subfigure-grid` in action:
 
 #subfigure-grid(
-  in-appendix: false,
   figure(
     image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
     caption: [An image on the left.]
@@ -167,8 +166,6 @@ This is `subfigure-grid` in action:
 )
 
 Above in @subfigure-grid-example, we see a figure which is composed of two other figures, namely @sub-left-example and @sub-right-example.
-
-*Important note:* Since subfigures are still an experimental feature, subfigure grids, contrary to other figures, don't show up with the correct numbering by default (check this template's homepage for more details on why). As such, you will have to manually specify whether the figure is inside an appendix or not, with the `in-appendix` argument.
 
 == A note about equations
 

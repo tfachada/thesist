@@ -11,7 +11,6 @@
 )<example_ref_B>
 
 #subfigure-grid(
-  in-appendix: true,
   figure(
     rect(),
     caption: [An image on the left.]
