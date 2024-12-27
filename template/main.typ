@@ -3,7 +3,6 @@
 /* INIT THESIS */
 // Set language to en/pt
 // Setup title page
-// Hide unused lists
 // Pick heading styles
 // Further customizations available for PIC2 reports
 #show: thesis.with(
@@ -38,26 +37,6 @@
   // *- Define as "none" (without quotation marks) if unneeded
 
 
-  // PIC2-related settings:
-
-    // Set to true for the cover to say this is a PIC2 report.
-    pic-mode: false,
-
-    // Used to edit the text right before the name of the degree. Only change this if the PIC mode default for some reason isn't good.
-    string-before-degree: none,
-
-    // Set to true to hide the committee, acknowledgments or abstracts if either is unneeded
-    // If you are writing a thesis, leave them all as false!
-    hide-committee: false,
-    hide-acknowledgments: false,
-    hide-abstract: false,
-
-    // Defines whether chapters should always start on an odd page.
-    // If you are writing a PIC2 report, check with your supervisor(s) if you have to set to false or not.
-    // If you are writing a thesis, always leave it as true!
-    chapters-on-odd-pages: true,
-
-
   // Set the chapter heading style
   // Options:
   //  - "fancy": Full page - <chapter number> + <chapter title> + <chapter outline>
@@ -73,13 +52,33 @@
   appendix-style: "simple",
 
 
-  // Set to true to hide the pages with the lists of figures, tables, algorithms, code snippets or glossary terms
-  // WARNING: Please make sure at the end that you are only hiding the ones that would otherwise be empty!
-  hide-figure-list: false,
-  hide-table-list: false,
-  hide-algorithm-list: false,
-  hide-code-list: false,
+  // Set to true to hide the glossary if not used
   hide-glossary: false,
+
+
+  // PIC2-related settings
+  // Please erase or comment out these settings if you're writing a thesis!
+
+    // Set to true for the cover to say this is a PIC2 report
+    pic-mode: false,
+
+    // Used to edit the text right before the name of the degree. Only change this from none if the PIC mode default for some reason isn't good.
+    string-before-degree: none,
+
+    // Set to true to hide the committee, acknowledgments or abstracts if either is unneeded
+    hide-committee: false,
+    hide-acknowledgments: false,
+    hide-abstract: false,
+
+    // Set to true if you want to always hide these outlines in a PIC, even if there is content to outline in them
+    hide-outline: false,
+    hide-figure-list: false,
+    hide-table-list: false,
+    hide-algorithm-list: false,
+    hide-code-list: false,
+
+    // Defines whether chapters should always start on an odd page
+    chapters-on-odd-pages: true,
 
 
   // Don't edit this array. It's used for communication with the package.
@@ -110,6 +109,3 @@
 // Add appendices here
 #include("Chapters/Appendix-A.typ")
 #include("Chapters/Appendix-B.typ")
-
-/* DOCUMENT ENDS HERE */
-/* REMEMBER TO HIDE THE LISTS YOU DON'T USE */

@@ -11,7 +11,9 @@ Add your glossary terms below!
 
   - Terms with a long form will be shown just as their short form from the second time on;
 
-  - To show entries that weren't referenced yet, add argument "show-all: true" to #print-glossary().
+  - To show entries that weren't referenced yet, add argument "show-all: true" to #print-glossary();
+
+  - If the glossary does not show up at all, please check if you are hiding it in main.typ.
 
 For any further doubts, check the page of the imported package:
 https://github.com/typst-community/glossarium

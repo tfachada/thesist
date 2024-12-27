@@ -12,22 +12,23 @@
   supervisor: none,
   co-supervisor: none,
   chairperson: none,
-  committee-members: (),
+  committee-members: none,
   date: none,
-  hide-figure-list: none,
-  hide-table-list: none,
-  hide-algorithm-list: none,
-  hide-code-list: none,
-  hide-glossary: none,
-  included-content: (),
+  chapter-style: "fancy",
+  appendix-style: "simple",
+  hide-glossary: false,
   pic-mode: false,
   string-before-degree: none,
   hide-committee: false,
   hide-acknowledgments: false,
   hide-abstract: false,
+  hide-outline: false,
+  hide-figure-list: false,
+  hide-table-list: false,
+  hide-algorithm-list: false,
+  hide-code-list: false,
   chapters-on-odd-pages: true,
-  chapter-style: "fancy",
-  appendix-style: "simple",
+  included-content: (),
   body
 ) = {
 
@@ -359,38 +360,47 @@
       show link: set text(rgb("000000"))
       link(it.element.location(), it.body + h(1fr) + it.page)
     }
-    outline(
-      title: STRING_OUTLINE,
-      indent: auto
-    )
+    if not hide-outline {
+      outline(
+        title: STRING_OUTLINE,
+        indent: auto
+      )
+    }
   }
 
-  if not hide-figure-list {
-    outline(
-      title: STRING_OUTLINE_FIGURES,
-      target: figure.where(kind: image)
-    )
-  }
+  {
+    show outline: it => {
+      context if query(selector(it.target).after(here())).len() == 0 {}
+      else{it}
+    }
 
-  if not hide-table-list {
-    outline(
-      title: STRING_OUTLINE_TABLES,
-      target: figure.where(kind: table)
-    )
-  }
+    if not hide-figure-list {
+      outline(
+        title: STRING_OUTLINE_FIGURES,
+        target: figure.where(kind: image)
+      )
+    }
 
-  if not hide-algorithm-list {
-    outline(
-      title: STRING_OUTLINE_ALGORITHMS,
-      target: figure.where(kind: "algorithm")
-    )
-  }
+    if not hide-table-list {
+      outline(
+        title: STRING_OUTLINE_TABLES,
+        target: figure.where(kind: table)
+      )
+    }
 
-  if not hide-code-list {
-    outline(
-      title: STRING_OUTLINE_CODE,
-      target: figure.where(kind: raw)
-    )
+    if not hide-algorithm-list {
+      outline(
+        title: STRING_OUTLINE_ALGORITHMS,
+        target: figure.where(kind: "algorithm")
+      )
+    }
+
+    if not hide-code-list {
+      outline(
+        title: STRING_OUTLINE_CODE,
+        target: figure.where(kind: raw)
+      )
+    }
   }
 
   if not hide-glossary {
