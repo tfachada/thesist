@@ -70,7 +70,8 @@
     hide-acknowledgments: false,
     hide-abstract: false,
 
-    // Set to true if you want to always hide these outlines in a PIC, even if there is content to outline in them
+    // Set to true if you want to always hide these outlines in a PIC.
+    // If set to false, they will automatically appear when there is content, and disappear when there isn't.
     hide-outline: false,
     hide-figure-list: false,
     hide-table-list: false,
