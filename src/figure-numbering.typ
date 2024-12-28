@@ -1,5 +1,5 @@
-// Set/reset numbering in the given format for figures of different kinds, as well as equations
-// Does NOT apply to figures with subfigures
+// Set/reset numbering in the given format for figures of different kinds, as well as equations.
+// Does NOT apply to figures with subfigures. Those update automatically.
 #let set-figure-numbering(it, new-format: none) = {
 
   // Set chapter-relative numbering for images
