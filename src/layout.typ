@@ -14,6 +14,7 @@
   chairperson: none,
   committee-members: none,
   date: none,
+  extra-page: none,
   chapter-style: "fancy",
   appendix-style: "simple",
   pic-mode: false,
@@ -310,6 +311,9 @@
     heading(STRING_DECLARATION_TITLE, numbering: none, outlined: false)
     text(STRING_DECLARATION_BODY)
   }
+
+  // Optional extra page
+  extra-page
 
   // Acknowledgments page (recall the included-content array from main.typ)
   if not hide-acknowledgments {

@@ -37,6 +37,10 @@
   // *- Define as "none" (without quotation marks) if unneeded
 
 
+  // Optional extra page to show before the acknowledgments. Use it if you want to include a special dedication, quote, etc. Set to none to ignore.
+  extra-page: include("Beginning/Extra-page.typ"),
+
+
   // Set the chapter heading style
   // Options:
   //  - "fancy": Full page - <chapter number> + <chapter title> + <chapter outline>
