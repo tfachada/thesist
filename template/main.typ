@@ -52,11 +52,7 @@
   appendix-style: "simple",
 
 
-  // Set to true to hide the glossary if not used
-  hide-glossary: false,
-
-
-  // PIC2-related settings
+  // PIC2 settings
   // Please erase or comment out these settings if you're writing a thesis!
 
     // Set to true for the cover to say this is a PIC2 report
@@ -65,10 +61,12 @@
     // Used to edit the text right before the name of the degree. Only change this from none if the PIC mode default for some reason isn't good.
     string-before-degree: none,
 
-    // Set to true to hide the committee, acknowledgments or abstracts if either is unneeded
+    // Set to true to hide the committee, copyright declaration, acknowledgments or abstracts if either is unneeded
     hide-committee: false,
+    hide-declaration: false,
     hide-acknowledgments: false,
-    hide-abstract: false,
+    hide-abstract-en: false,
+    hide-abstract-pt: false,
 
     // Set to true if you want to always hide these outlines in a PIC.
     // If set to false, they will automatically appear when there is content, and disappear when there isn't.
@@ -78,8 +76,10 @@
     hide-algorithm-list: false,
     hide-code-list: false,
 
-    // Defines whether chapters should always start on an odd page
-    chapters-on-odd-pages: true,
+    // Setting to true removes the automatic pagebreaks between sections. If you have to do this, remember to use linebreaks before headings if needed, and to avoid the fancy heading style.
+    no-pagebreaks: false,
+
+  // End of PIC2 settings
 
 
   // Don't edit this array. It's used for communication with the package.
@@ -102,7 +102,7 @@
 // Bibliography (use either .bib or .yaml; style is usually ieee)
 #bibliography("refs.bib", style: "ieee")
 
-// Turn this code into a comment if you don't use appendices
+// This code is only useful if you include appendices
 #set heading(numbering: "A.1")
 #counter(heading).update(0)
 #show: set-figure-numbering.with(new-format: "A.1")

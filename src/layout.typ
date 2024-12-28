@@ -16,18 +16,19 @@
   date: none,
   chapter-style: "fancy",
   appendix-style: "simple",
-  hide-glossary: false,
   pic-mode: false,
   string-before-degree: none,
   hide-committee: false,
+  hide-declaration: false,
   hide-acknowledgments: false,
-  hide-abstract: false,
+  hide-abstract-en: false,
+  hide-abstract-pt: false,
   hide-outline: false,
   hide-figure-list: false,
   hide-table-list: false,
   hide-algorithm-list: false,
   hide-code-list: false,
-  chapters-on-odd-pages: true,
+  no-pagebreaks: false,
   included-content: none,
   body
 ) = {
@@ -164,7 +165,7 @@
     )
   })
 
-  if chapters-on-odd-pages {
+  if not no-pagebreaks {
     pagebreak(to: "odd", weak: true)
   }
   else {
@@ -191,11 +192,8 @@
 
   // Set heading style for chapters/appendices, using the state variable
   show heading.where(level: 1): it => {
-    if chapters-on-odd-pages == true {
+    if no-pagebreaks == false {
       pagebreak(to: "odd", weak: true)
-    }
-    else {
-      pagebreak(weak: true)
     }
     if it.numbering == none {
       it
@@ -250,6 +248,7 @@
 
   // Allow a caption in an outline to receive different treatment from the original (see flex-caption in utils.typ)
   let in-outline = state("in-outline", none)
+  in-outline.update(false)
   show outline: it => {
     in-outline.update(true)
     it
@@ -307,8 +306,10 @@
   counter(page).update(1)
 
   // Declaration page
-  heading(STRING_DECLARATION_TITLE, numbering: none, outlined: false)
-  text(STRING_DECLARATION_BODY)
+  if not hide-declaration {
+    heading(STRING_DECLARATION_TITLE, numbering: none, outlined: false)
+    text(STRING_DECLARATION_BODY)
+  }
 
   // Acknowledgments page (recall the included-content array from main.typ)
   if not hide-acknowledgments {
@@ -317,27 +318,30 @@
   }
 
   // Abstracts and keywords
-  if not hide-abstract {
-
+  {
     // For the Keywords heading. Only applies in this scope.
     show heading.where(level: 2): set text(size: 21pt)
 
     // English
     let abstract-en = {
-      heading("Abstract", numbering: none, outlined: false, bookmarked: true)
-      included-content.at(1)
-      v(1cm)
-      heading("Keywords", level: 2, numbering: none, outlined: false)
-      included-content.at(2)
+      if not hide-abstract-en {
+        heading("Abstract", numbering: none, outlined: false, bookmarked: true)
+        included-content.at(1)
+        v(1cm)
+        heading("Keywords", level: 2, numbering: none, outlined: false)
+        included-content.at(2)
+      }
     }
 
     // Portuguese
     let abstract-pt = {
-      heading("Resumo", numbering: none, outlined: false, bookmarked: true)
-      included-content.at(3)
-      v(1cm)
-      heading("Palavras Chave", level: 2, numbering: none, outlined: false)
-      included-content.at(4)
+      if not hide-abstract-pt {
+        heading("Resumo", numbering: none, outlined: false, bookmarked: true)
+        included-content.at(3)
+        v(1cm)
+        heading("Palavras Chave", level: 2, numbering: none, outlined: false)
+        included-content.at(4)
+      }
     }
 
     if lang == "en" {
@@ -351,7 +355,7 @@
     }
   }
 
-  // Outlines
+  // Main outline
   {
     show outline.entry.where(level: 1): it => {
       set text(weight: "bold")
@@ -368,6 +372,7 @@
     }
   }
 
+  // Outlines for figure() content
   {
     show outline: it => {
       context if query(selector(it.target).after(here())).len() == 0 {}
@@ -403,25 +408,21 @@
     }
   }
 
-  if not hide-glossary {
-    {
-      set heading(numbering: none, outlined: false, bookmarked: true)
-      included-content.at(5)
-    }
+  // Glossary
+  {
+    set heading(numbering: none, outlined: false, bookmarked: true)
+    included-content.at(5)
   }
 
-  if chapters-on-odd-pages {
+  if not no-pagebreaks {
     pagebreak(to: "odd", weak: true)
   }
-  else {
-    pagebreak(weak: true)
-  }
-
 
   /* FRONT MATTER ENDS HERE */
 
+
   // "Figure x:" in bold
-  // (putting here because glossarium uses figure captions for the entries)
+  // (putting this down here to avoid breaking the glossary)
   show figure.caption: it => {
     let sup = if it.supplement != none [#it.supplement~]
     let num = if it.numbering != none {
