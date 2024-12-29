@@ -178,7 +178,7 @@
 
   // Set heading sizes and spacings
   set heading(numbering: "1.1")
-  show heading: set block(above: 2.2em, below: 1.5em)
+  show heading: set block(above: 2.5em, below: 1.5em)
   show heading.where(level: 1): set text(size: 25pt)
   show heading.where(level: 2): set text(size: 14pt)
   show heading.where(level: 3): set text(size: 12pt)
@@ -273,7 +273,8 @@
   set figure.caption(position: top)
   show figure.where(kind: image): set figure.caption(position: bottom)
 
-  // Color of both normal and reference links
+  // Color of links
+  show cite: set text(rgb("696969"))
   show link: set text(rgb("696969"))
   show ref: set text(rgb("696969"))
 

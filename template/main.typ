@@ -65,7 +65,7 @@
     // Used to edit the text right before the name of the degree. Only change this from none if the PIC mode default for some reason isn't good.
     string-before-degree: none,
 
-    // Set to true to hide the committee, copyright declaration, acknowledgments or abstracts if either is unneeded
+    // Set to true to hide the committee, declaration, acknowledgments or abstracts if either is unneeded
     hide-committee: false,
     hide-declaration: false,
     hide-acknowledgments: false,

@@ -22,7 +22,7 @@ If you want to compile your thesis offline, make sure you have the following fon
 
 ### Is this template good enough for me to write my thesis with it?
 
-Yes, as long as Typst allows what you want.
+Yes, as long as you are comfortable with writing in Typst for your usecase. Be sure to check the quick guide, and Typst's documentation and online help channels if you need.
 
 The format of the document itself follows the IST rules already, so, unless the rules change, updates will be unrelated to that.
 
