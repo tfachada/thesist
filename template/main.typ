@@ -106,7 +106,7 @@
 // Bibliography (use either .bib or .yaml; style is usually ieee)
 #bibliography("refs.bib", style: "ieee")
 
-// This code is only useful if you include appendices
+// This code is needed if you include appendices
 #set heading(numbering: "A.1")
 #counter(heading).update(0)
 #show: set-figure-numbering.with(new-format: "A.1")

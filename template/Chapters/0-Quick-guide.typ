@@ -1,9 +1,12 @@
 // It's recommended to always import these!
 #import "@preview/thesist:0.2.0": flex-caption, subfigure-grid
+
+// Always import a glossary package, too!
 #import "@preview/glossarium:0.5.1": gls, glspl
 
 // Optionally import more packages, depending on the chapter's needs. In the case of this chapter, we will use these:
-#import "@preview/codly:1.0.0": *
+#import "@preview/codly:1.1.1": *
+#import "@preview/codly-languages:0.1.3": *
 #import "@preview/lovelace:0.3.0": *
 // Check Typst Universe to look for new packages you might need, and always read their description page to know how to handle them.
 
@@ -15,85 +18,59 @@ This chapter is a tutorial on how to use this template's features. This is _not_
 
 This is a new paragraph. You already saw the `import` statements and the `//comments` in the code, right?
 
-Let's move on, then!
+Let's keep reading and comparing with the code, then!
 
-== Figures
+== Including content
 
-This is a simple image call:
+=== Images
+
+As you probably know if you've already used Typst, this is a simple image call:
 
 #figure(
-  image("../Images/0-Quick-guide/andromeda.jpg", width: 80%),
+  image("../Images/0-Quick-guide/andromeda.jpg", width: 40%),
   caption: [An image]
-)<example_simple_image>
+)<example_image>
 
-In order to index @example_simple_image, we need to *always* wrap it in a `figure()` call and give it a `caption`. Indexing all the image calls in the thesis is mandatory!
-
-*Note:* If you want to draw images using Typst packages like #link("https://typst.app/universe/package/cetz")[CeTZ], you can still index them as if they were normal images, by wrapping them in a `figure()` call. You may have to manually specify that figure's `kind` parameter as `image` (_no quotation marks_), but Typst usually detects that automatically.
-
-=== Flexible captions
-
-The first function of this thesis package that will be presented here is `flex-caption`. Consider the following picture:
+This is a different one, with a different number:
 
 #figure(
-  image("../Images/0-Quick-guide/andromeda.jpg", width: 80%),
-  caption: flex-caption(
-    [This is a very long picture caption that goes into detail about some things. #lorem(20)],
-    [A short version of the caption]
-  )
-)<example_flex_caption>
+  image("../Images/0-Quick-guide/andromeda.jpg", width: 40%),
+  caption: [The same image again]
+)<example_image_2>
 
-Look now at the image index back at the beginning of the thesis, and see the caption @example_flex_caption has in there. Instead of it being cluttered with this long caption, it has the short version in there. Might be useful!
+In order to index and center @example_image and @example_image_2, we need to *always* make them part of a `figure()` and give them a `caption`. Indexing and centering all the image calls in the thesis is mandatory!
+
+*Note 1:* If you want to draw images using Typst packages like #link("https://typst.app/universe/package/cetz")[CeTZ], you can still index them as if they were normal images, by making them part of a `figure()`. You may have to manually specify that figure's `kind` parameter as `image` (_no quotation marks_), but Typst usually detects that automatically.
+
+*Note 2:* Remember that you can erase or customize the "Figure" supplement if you want, by using square brackets right after the `@reference`. This allows you to say things like "Figures @example_image[] and @example_image_2[]".
 
 === Tables
 
-Tables also have to be indexed. Although they are not figures in the usual sense of the word, from a coding point of view they are when they are indexed with the `figure` function.
+Tables also have to be indexed and centered. Although they are not figures in the usual sense of the word, from a coding point of view they are when they are indexed with the `figure` function.
 
+// Using a [content block] right outside of the #figure() is equivalent to putting the content directly inside the #figure().
+// You might prefer this form for multi-line content.
+// Note: This has nothing to do with the position of the caption.
 #figure(
-  table(
+  caption: [A table]
+)[
+  #table(
     columns: 2,
     [*First name*], [*Last name*],
     [Foo], [Bar],
-    [Bar], [Foo],
-  ),
-  caption: [A table]
-)
-
-Typst automatically detects that this is a different type of `figure`, and as such calls it "Table" instead of "Figure" and numbers it differently.
-
-=== Code snippets
-
-Like tables, code figures will be automatically interpreted as their own type - in this case, `raw`.
-
-You can either call one in the traditional way, like this:
-
-#figure(
-  caption: [A piece of code],
-  ```
-  pub fn main() {
-      println!("Hello, world!");
-  }
-  ```
-)
-
-Or use an imported package which function call will be interpreted by `figure` as a `raw`. An example of such a package is #link("https://typst.app/universe/package/codly")[`codly`]:
-
-// Notice that the content block can go either inside #figure() or right after it.
-// Pick whichever form you prefer. What's important is that #figure() affects that block by making it numbered.
-#figure(
-  caption: [A fancy piece of code]
-)[
-  // This show rule would normally be at the top of the document, but putting it here to prevent it from affecting other examples
-  #show: codly-init.with()
-
-  #codly(
-    languages: (
-      rust: (
-        name: "Rust",
-        //icon: text(font: "tabler-icons", "\u{fa53}"),
-        color: rgb("#CE412B")
-      ),
-    )
+    [Bar], [Foo]
   )
+]
+
+Typst automatically detects that this is a different type of `figure`, and so calls it "Table" instead of "Figure", numbers it differently and respects this template's instruction to put the caption for tables on top!
+
+=== Listings
+
+Like tables, listings will be automatically interpreted as their own type of figure - in this case, `raw`. You can call one like this:
+
+#figure(
+  caption: [A piece of code]
+)[
   ```rust
   pub fn main() {
       println!("Hello, world!");
@@ -101,27 +78,43 @@ Or use an imported package which function call will be interpreted by `figure` a
   ```
 ]
 
+Optionally, you can use a package like #link("https://typst.app/universe/package/codly")[`codly`] for some extra formatting:
+
+#show: codly-init.with()
+#codly(languages: codly-languages)
+
+#figure(
+  caption: [A fancy piece of code]
+)[
+  ```rust
+  pub fn main() {
+      println!("Hello, world!");
+  }
+  ```
+]
+
+#codly-disable()
+
 *Note:* This is just an example. To know how to use a certain package to its full extent, including any that is used in this guide, be sure to read its documentation.
 
 === Algorithms
 
-Depending on what your thesis is about, you might want to display and index algorithms. Algorithm pictures are not native to Typst and were specified in this package for your convenience. Since they are custom, they are not detected automatically, and as such you need to specify its `kind` parameter _with quotation marks_ (you need them because it's not a default type).
+Depending on what your thesis is about, you might want to display algorithms. Algorithm figures are not native to Typst and were specified in this package for your convenience. Since they are custom, they are not detected automatically, and as such you need to specify its `kind` parameter _with quotation marks_ (you need them because it's not a default kind).
 
-You can either define an algorithm with `raw text`:
+You can define an algorithm with `raw text`:
 
 #figure(
   kind: "algorithm",
-  caption: [A simple algorithm],
-  [
-    ```
-    1: Do stuff
-    2: Do more stuff
-    3: Stuff <- stuff
-    ...
-    N: You get stuff
-    ```
-  ]
-)
+  caption: [A simple algorithm]
+)[
+  ```
+  1: Do stuff
+  2: Do more stuff
+  3: Stuff <- stuff
+  ...
+  N: You get stuff
+  ```
+]
 
 Or use a package like #link("https://typst.app/universe/package/lovelace")[`lovelace`] to make it fancier:
 
@@ -144,32 +137,9 @@ Or use a package like #link("https://typst.app/universe/package/lovelace")[`love
   ]
 ]
 
-=== Subfigures
+=== A note about equations
 
-Subfigures are implemented in this template via the function `subfigure-grid`. This is a slightly modified version of the `grid` function of the #link("https://typst.app/universe/package/subpar")[`subpar`] package for subfigures. The modifications allow it to work with the numbering used by figures in this thesis format.
-
-This is `subfigure-grid` in action:
-
-#subfigure-grid(
-  figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
-    caption: [An image on the left.]
-  ), <sub-left-example>,
-  figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
-    caption: [An image on the right.]
-  ), <sub-right-example>,
-  align: top,
-  columns: (1fr, 1fr),
-  caption: [A figure composed of two subfigures],
-  label: <subfigure-grid-example>,
-)
-
-Above in @subfigure-grid-example, we see a figure which is composed of two other figures, namely @sub-left-example and @sub-right-example.
-
-== A note about equations
-
-Like figures, equations also need to be centered and numbered.
+Although equations don't need to be listed, they still need to be centered and numbered, just like figures.
 
 #linebreak()
 
@@ -187,20 +157,97 @@ $
 E = m c^2
 $
 
+== Flexible captions
+
+The first function of this thesis package that will be presented here is `flex-caption`. Consider the following figure:
+
+#figure(
+  image("../Images/0-Quick-guide/andromeda.jpg", width: 80%),
+  caption: flex-caption(
+    [This is a very long figure caption that goes into detail about some things. #lorem(20)],
+    [A short version of the caption]
+  )
+)<example_flex_caption>
+
+Look now at the image index back at the beginning of the thesis, and see the caption @example_flex_caption has in there. Instead of it being cluttered with this long caption, it has the short version in there. Might be useful!
+
+== Subfigures
+
+Subfigures, despite not being native to Typst yet, are implemented in this template via the function `subfigure-grid`. This is a slightly modified version of the `grid` function of the #link("https://typst.app/universe/package/subpar")[`subpar`] package for subfigures. The modifications allow it to work with the numbering used by figures in this template.
+
+This is `subfigure-grid` in action:
+
+#subfigure-grid(
+  figure(
+    image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
+    caption: [An image on the left.]
+  ), <sub-left-example>,
+
+  figure(
+    image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
+    caption: [An image on the right.]
+  ), <sub-right-example>,
+
+  kind: image,
+  align: top,
+  columns: (1fr, 1fr),
+  caption: [A figure composed of two subfigures],
+  label: <subfigure-grid-example>
+)
+
+In @subfigure-grid-example, we see a figure which is composed of two other figures, namely @sub-left-example and @sub-right-example.
+
+*Note:* Contrary to normal figures, subfigure grids don't automatically detect the `kind` that should be used. You must change that field yourself if you want to something like this:
+
+#subfigure-grid(
+  figure(
+    caption: [Code on the left.]
+  )[
+    ```c
+    #include <stdio.h>
+
+    int main() {
+      printf("Hello world!\n");
+      return 0;
+    }
+    ```
+  ], <sub-left-example-listing>,
+
+  figure(
+    caption: [Different code on the right.]
+  )[
+    ```java
+    public class HelloWorld {
+      public static void main(String[] args) {
+        System.out.println("Hello, World!");
+      }
+    }
+    ```
+  ], <sub-right-example-listing>,
+
+  kind: raw,
+  align: top,
+  columns: (1fr, 1fr),
+  caption: [A comparison of two pieces of code],
+  label: <subfigure-grid-example-listing>
+)
+
+@subfigure-grid-example-listing, composed of Listings @sub-left-example-listing[] and @sub-right-example-listing[], is not being treated as an image figure, thanks to `kind: raw`.
+
 == Using the Glossary
 
-This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[`glossarium`] package. To reference glossary entries, you use the `#gls()` and `#glspl()` commands, depending on whether you want to write the singular or the plural form.
+This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[`glossarium`] package. With it, you use `#gls()` for singular forms and `#glspl()` for plural forms. Some example references are #gls("mu_0"), #glspl("potato"), #glspl("dm") and #gls("ist"). The latter two become just #glspl("dm") and #gls("ist") after their first usage. Be aware that glossary terms typically don't show up in the glossary until you reference them!
 
-Some example references are #gls("mu_0"), #glspl("potato"), #glspl("dm") and #gls("ist"). The latter two become just #glspl("dm") and #gls("ist") after their first usage. Glossary entries are set up in the `Glossary.typ` file, which guides you on how to manage entries.
+Glossary entries and titles are set up in the `Glossary.typ` file.
 
 == Using the Bibliography
 
-Simply reference the bibliography items in the same way you would do for figures. Like this: @Madje_Typst Paste LaTeX-style references in `refs.bib`, or switch to a `.yaml` file based on Typst's native format if you want.
+You can reference bibliography items like this @Madje_Typst, this #ref(<Madje_Typst>), or this #cite(<Madje_Typst>). Paste LaTeX-style (BibLaTeX) references in the included `refs.bib`, or switch to a `.yml` file with Typst's own format (Hayagriva) if you want.
 
 == Afterword
 
 You can keep this file in the project while removing it from `main.typ` if you want to keep it as a reference.
 
-Keep in mind that this template may receive new features in the future; this will be influenced, in part, by the evolution of both the package ecosystem and Typst itself. You can always check for updates and update the package in your document. Instructions will be given on the template's changelog if you need to take any extra steps besides just changing the version in your import statements.
+Keep in mind that this template may receive new features in the future. This will be influenced, in part, by the evolution of both the package ecosystem and Typst itself. Just like with your other imported packages, you can update the `thesist` version number in your `.typ` files. Instructions will be given on this template's changelog if you need to take any extra steps after that.
 
 *Feel free to contribute to this package's repository if you so wish.*

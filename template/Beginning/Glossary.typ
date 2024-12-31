@@ -1,67 +1,51 @@
+/*
+  Glossarium is the default glossary package of this template (you can use another if you want). If you have any doubts related to glossarium after reading the quick guide, you can check its documentation at:
+  https://github.com/typst-community/glossarium
+*/
+
 #import "@preview/glossarium:0.5.1": make-glossary, register-glossary, print-glossary
 
 #show: make-glossary
 
-/*
-Add your glossary terms below!
-
-  - They will always be shown alphabetically;
-
-  - If you don't specify a plural/longplural form, #gspl() will just add an s in case you call it;
-
-  - Terms with a long form will be shown just as their short form from the second time on;
-
-  - To show entries that weren't referenced yet, add argument "show-all: true" to #print-glossary().
-
-For any further doubts, check the page of the imported package:
-https://github.com/typst-community/glossarium
-*/
-
 #let main-glossary = (
   (
-    (
-      key: "potato",
-      short: "potato",
-      plural: "potatoes",
-      description: "An edible tuber"
-    ),
-  )
+    key: "potato",
+    short: "potato",
+    plural: "potatoes",
+    description: "An edible tuber"
+  ),
 )
 
-#let acronyms-glossary = (
+#let abbreviations-glossary = (
   (
-    (
-      key: "ist",
-      short: "IST",
-      long: "Instituto Superior Técnico"
-    ),
+    key: "ist",
+    short: "IST",
+    long: "Instituto Superior Técnico"
+  ),
 
-    (
-      key: "dm",
-      short: "DM",
-      long: "Diagonal Matrix",
-      longplural: "diagonal matrices"
-    ),
-  )
+  (
+    key: "dm",
+    short: "DM",
+    long: "Diagonal Matrix",
+    longplural: "Diagonal Matrices"
+  ),
 )
 
 #let symbols-glossary = (
   (
-    (
-      key: "mu_0",
-      short: $mu_0$,
-      description: "Standard magnetic permeability"
-    ),
-  )
+    key: "mu_0",
+    short: $mu_0$,
+    description: "Vacuum magnetic permeability"
+  ),
 )
 
 = Glossary
 #register-glossary(main-glossary)
 #print-glossary(main-glossary)
 
-== Acronyms
-#register-glossary(acronyms-glossary)
-#print-glossary(acronyms-glossary)
+== Abbreviations
+#register-glossary(abbreviations-glossary)
+#print-glossary(abbreviations-glossary)
 
 == Symbols
 #register-glossary(symbols-glossary)
