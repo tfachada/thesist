@@ -62,11 +62,11 @@ Tables also have to be indexed and centered. Although they are not figures in th
   )
 ]
 
-Typst automatically detects that this is a different type of `figure`, and so calls it "Table" instead of "Figure", numbers it differently and respects this template's instruction to put the caption for tables on top!
+Typst automatically detects that this is a different kind of `figure`, and so calls it "Table" instead of "Figure", numbers it differently and respects this template's instruction to put the caption for tables on top!
 
 === Listings
 
-Like tables, listings will be automatically interpreted as their own type of figure - in this case, `raw`. You can call one like this:
+Like tables, listings will be automatically interpreted as their own kind of figure - in this case, `raw`. You can call one like this:
 
 #figure(
   caption: [A piece of code]
