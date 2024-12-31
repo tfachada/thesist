@@ -197,7 +197,7 @@ This is `subfigure-grid` in action:
 
 In @subfigure-grid-example, we see a figure which is composed of two other figures, namely @sub-left-example and @sub-right-example.
 
-*Note:* Contrary to normal figures, subfigure grids don't automatically detect the `kind` that should be used. You must change that field yourself if you want to something like this:
+*Note:* Contrary to normal figures, subfigure grids don't automatically detect the `kind` that should be used. You must change that field yourself if you want to do something like this:
 
 #subfigure-grid(
   figure(
