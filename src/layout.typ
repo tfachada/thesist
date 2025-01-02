@@ -95,40 +95,37 @@
     STRING_BEFORE_DEGREE = string-before-degree
   }
 
+
   /* TITLE PAGE */
 
-  align(center,{
+  align(left, image("IST.png", width: 30%))
 
-    align(left, image("IST.png", width: 30%))
-
-    v(1cm)
+  align(center+horizon,{
 
     if cover-image != none {
+      v(1fr)
       cover-image
     }
-    else {
-      v(2cm)
+
+    v(1fr)
+
+    par(text(16pt, strong(title)))
+
+    if subtitle != none {
+      text(14pt, subtitle)
     }
 
-    v(1cm)
-
-    text(16pt, strong(title))
-
-    if subtitle != none{
-      text(14pt, "\n\n" + subtitle)
-    }
-
-    v(1cm)
+    v(1fr)
 
     text(14pt, strong(author))
 
-    v(1cm)
+    v(1fr)
 
-    text(12pt, STRING_BEFORE_DEGREE)
+    par(text(12pt, STRING_BEFORE_DEGREE))
 
-    text(16pt, "\n\n" + strong(degree))
+    text(16pt, strong(degree))
 
-    v(1cm)
+    v(1fr)
 
     if co-supervisor == none {
       text(12pt, STRING_SUPERVISOR + supervisor)
@@ -138,12 +135,12 @@
       text(12pt, "\n" + co-supervisor)
     }
 
-    v(1cm)
+    v(1fr)
 
     if not hide-committee {
-      text(14pt, strong(STRING_COMMITTEE))
+      par(text(14pt, strong(STRING_COMMITTEE)))
 
-      text(12pt, "\n\n" + STRING_CHAIRPERSON + chairperson)
+      text(12pt, STRING_CHAIRPERSON + chairperson)
       text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
 
       if committee-members.at(1) == none {
@@ -160,6 +157,8 @@
         }
       }
     }
+
+    v(1fr)
 
     align(bottom,
       text(14pt, strong(date))
@@ -191,7 +190,7 @@
     after-refs.update(true)
   }
 
-  // Set heading style for chapters/appendices, using the state variable
+  // Set heading style for chapters/appendices, using the appendix state variable
   show heading.where(level: 1): it => {
     if no-pagebreaks == false {
       pagebreak(to: "odd", weak: true)
@@ -291,8 +290,8 @@
 
   // Size and line spacing of footnotes (.7 font size = 1 "line"; explanation above)
   show footnote.entry: set text(size: 9pt)
-  set footnote.entry(gap: .7*9pt)
-  show footnote.entry: set par(leading: .7*9pt)
+  set footnote.entry(gap: .7em)
+  show footnote.entry: set par(leading: .7em)
 
 
   /* POST-COVER CONTENT */
