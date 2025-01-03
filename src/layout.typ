@@ -98,16 +98,22 @@
 
   /* TITLE PAGE */
 
-  align(left, image("IST.png", width: 30%))
+  place(
+    image("IST.png", width: 5cm),
+    dx: -.5cm,
+    dy: -.5cm
+  )
+
+  v(2fr)
 
   align(center+horizon,{
 
-    if cover-image != none {
-      v(1fr)
-      cover-image
-    }
+    set par(leading: .7em)
 
-    v(1fr)
+    if cover-image != none {
+      cover-image
+      v(1fr)
+    }
 
     par(text(16pt, strong(title)))
 

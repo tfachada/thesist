@@ -9,8 +9,9 @@
 
   lang: "en",
 
-  cover-image: image("Images/default-alameda.jpg", width: 95%),
+  cover-image: image("Images/default-alameda.jpg"),
   // cover-image: image("Images/default-taguspark.jpg", height: 4cm),
+  // *
 
   title: "This is the Title of the Thesis and it is a very Big Title covering More than One Line",
 
@@ -37,7 +38,7 @@
   // *- Define as "none" (without quotation marks) if unneeded
 
 
-  // Optional extra page to show before the acknowledgments. Use it if you want to include a special dedication, quote, etc. Set to none to ignore.
+  // Optional extra page to show before the acknowledgments. Use it if you want to include a special dedication, quote, etc. Comment or set to none to ignore.
   extra-page: include("Beginning/Extra-page.typ"),
 
 
@@ -103,7 +104,7 @@
 #include("Chapters/0-Quick-guide.typ")
 #include("Chapters/1-Introduction.typ")
 
-// Bibliography (use either .bib or .yaml; style is usually ieee)
+// Bibliography (use either .bib or .yml; style is usually ieee)
 #bibliography("refs.bib", style: "ieee")
 
 // This code is needed if you include appendices
