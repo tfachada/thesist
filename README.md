@@ -44,6 +44,6 @@ The known breaking changes introduced by any new version of this package will al
 
 This template is not necessarily a finished product. Contributions are welcome!
 
-Also thanks to the Typst online community members for the help in some of the functionalities, and for the extensions used here.
+Thanks to the Typst online community members for the help in some of the functionalities, and for the extensions used here.
 
-The IST logo and the default cover images used in this template are intellectual property of Instituto Superior Técnico, and shall not be used for non-professional purposes or by people outside of the institution without its express authorization. The example image used in the quick guide is in the public domain.
+The IST logo and the default cover images used in this template are intellectual property of Instituto Superior Técnico, and shall not be used for non-professional purposes or by people outside of the institution without its express authorization. The example image used in the quick guide is available, with terms included, [here](https://pixabay.com/photos/m31-space-astronomy-astronomical-3613931/).
