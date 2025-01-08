@@ -106,7 +106,7 @@
 
   v(2fr)
 
-  align(center+horizon,{
+  align(center,{
 
     set par(leading: .7em)
 
@@ -166,9 +166,8 @@
 
     v(1fr)
 
-    align(bottom,
-      text(14pt, strong(date))
-    )
+    text(14pt, strong(date))
+
   })
 
   if not no-pagebreaks {
