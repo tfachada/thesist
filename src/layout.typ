@@ -149,18 +149,15 @@
       text(12pt, STRING_CHAIRPERSON + chairperson)
       text(12pt, "\n" + STRING_SUPERVISOR + supervisor)
 
-      if committee-members.at(1) == none {
-        text(12pt, "\n" + STRING_MEMBER)
-      }
-      else{
-        text(12pt, "\n" + STRING_MEMBERS)
-      }
-      text(12pt, committee-members.at(0))
       if committee-members.at(1) != none {
+        text(12pt, "\n" + STRING_MEMBERS + committee-members.at(0))
         text(12pt, "\n" + committee-members.at(1))
         if committee-members.at(2) != none {
           text(12pt, "\n" + committee-members.at(2))
         }
+      }
+      else {
+        text(12pt, "\n" + STRING_MEMBER + committee-members.at(0))
       }
     }
 
@@ -283,14 +280,18 @@
   show ref: set text(rgb("696969"))
 
   // Justification and spacing of main text
-  // Note: Per IST rules, line spacing needs to be "1.5 lines". The definition of line spacing is very ambiguous across platforms, and "leading: 1.05em" recreates the 1.5 of the LaTeX templates (or misses it by a microscopic amount). Note that "em" means the font size.
+  /*
+    Note: Per IST rules, line spacing needs to be "1.5 lines". The definition of line spacing is very ambiguous across platforms, and "1.05em" recreates the 1.5 of the LaTeX templates (or misses it by a microscopic amount). Note that "em" means the font size.
+
+    This kind of ambiguous conventions should not be overthought. For instance, you can see that Overleaf doesn't render the exact font size when you use Inspect Element, contrary to Typst.
+  */
   set par(
     justify: true,
     first-line-indent: 1.5em,
-    leading: 1.05em
+    leading: 1.05em,
+    spacing: 1.05em
   )
   set block(spacing: 2.5em)
-  set par(spacing: 1.05em)
   set list(indent: 2em)
 
   // Size and line spacing of footnotes (.7 font size = 1 "line"; explanation above)
