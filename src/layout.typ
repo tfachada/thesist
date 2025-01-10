@@ -281,9 +281,9 @@
 
   // Justification and spacing of main text
   /*
-    Note: Per IST rules, line spacing needs to be "1.5 lines". The definition of line spacing is very ambiguous across platforms, and "1.05em" recreates the 1.5 of the LaTeX templates (or misses it by a microscopic amount). Note that "em" means the font size.
+    Note: Per IST rules, the line spacing needs to be "1.5 lines". The definition of line spacing is very ambiguous across platforms, and "1.05em" recreates the 1.5 of the LaTeX templates (or misses it by a microscopic amount). Note that "em" means the font size.
 
-    This kind of ambiguous conventions should not be overthought. For instance, you can see that Overleaf doesn't render the exact font size when you use Inspect Element, contrary to Typst.
+    This kind of ambiguous conventions should not be overthought, as the rabbit hole runs deeper and also raises questions about LaTeX. For instance, you can see that Overleaf doesn't render the exact font size when you use Inspect Element, contrary to Typst.
   */
   set par(
     justify: true,

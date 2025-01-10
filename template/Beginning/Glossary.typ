@@ -18,13 +18,13 @@
 
 #let abbreviations-glossary = (
   (
-    key: "ist",
+    key: "IST",
     short: "IST",
     long: "Instituto Superior Técnico"
   ),
 
   (
-    key: "dm",
+    key: "DM",
     short: "DM",
     long: "Diagonal Matrix",
     longplural: "Diagonal Matrices"

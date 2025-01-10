@@ -12,7 +12,7 @@
   show heading.where(level: 1): it => it + counter(figure.where(kind: table)).update(0)
   show figure.where(kind: table): set figure(numbering: table-numbering)
 
-  // Same for code snippets
+  // Same for listings
   let code-numbering = super => numbering(new-format, counter(heading).get().first(), super)
   show heading.where(level: 1): it => it + counter(figure.where(kind: raw)).update(0)
   show figure.where(kind: raw): set figure(numbering: code-numbering)

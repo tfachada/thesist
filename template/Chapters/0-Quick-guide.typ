@@ -25,14 +25,14 @@ You already saw the `import` statements and the `//comments` in the code, right?
 As you probably know if you've already used Typst, this is a simple image call:
 
 #figure(
-  image("../Images/0-Quick-guide/andromeda.jpg", width: 40%),
+  image("../Images/0-Quick-guide/example.jpg", width: 40%),
   caption: [An image]
 )<example_image>
 
 This is a different one, with a different number:
 
 #figure(
-  image("../Images/0-Quick-guide/andromeda.jpg", width: 40%),
+  image("../Images/0-Quick-guide/example.jpg", width: 40%),
   caption: [The same image again]
 )<example_image_2>
 
@@ -163,12 +163,12 @@ This is `subfigure-grid` in action:
 
 #subfigure-grid(
   figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
+    image("../Images/0-Quick-guide/example.jpg", width: 90%),
     caption: [An image on the left.]
   ), <sub-left-example>,
 
   figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 90%),
+    image("../Images/0-Quick-guide/example.jpg", width: 90%),
     caption: [An image on the right.]
   ), <sub-right-example>,
 
@@ -186,22 +186,22 @@ Alternatively, you can use more subfigures, by tweaking the `columns` and `rows`
 
 #subfigure-grid(
   figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 50%),
+    image("../Images/0-Quick-guide/example.jpg", width: 60%),
     caption: []
   ),
 
   figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 50%),
+    image("../Images/0-Quick-guide/example.jpg", width: 60%),
     caption: []
   ),
 
   figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 50%),
+    image("../Images/0-Quick-guide/example.jpg", width: 60%),
     caption: []
   ),
 
   figure(
-    image("../Images/0-Quick-guide/andromeda.jpg", width: 50%),
+    image("../Images/0-Quick-guide/example.jpg", width: 60%),
     caption: []
   ),
 
@@ -257,7 +257,7 @@ If you have any other doubts about how to use subfigures, be sure to check the d
 The package of this thesis also includes the function `flex-caption`. Consider the following figure:
 
 #figure(
-  image("../Images/0-Quick-guide/andromeda.jpg", width: 80%),
+  image("../Images/0-Quick-guide/example.jpg", width: 80%),
   caption: flex-caption(
     [This is a very long figure caption that goes into detail about some things. #lorem(20)],
     [A short version of the caption]
@@ -268,7 +268,7 @@ Look now at the image index back at the beginning of the thesis, and see the cap
 
 == Using the Glossary
 
-This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[`glossarium`] package. With it, you use `#gls()` for singular forms and `#glspl()` for plural forms. Some example references are #gls("mu_0"), #glspl("potato"), #glspl("dm") and #gls("ist"). The latter two become just #glspl("dm") and #gls("ist") by default after their first usage. Be aware that glossary terms typically don't show up in the glossary until you reference them!
+This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[`glossarium`] package. With it, you use `#gls()` for singular forms and `#glspl()` for plural forms. Some example references are #gls("mu_0"), #glspl("potato"), #glspl("DM") and #gls("IST"). The latter two become just #glspl("DM") and #gls("IST") by default after their first usage. Be aware that glossary terms typically don't show up in the glossary until you reference them!
 
 Glossary entries and titles are set up in the `Glossary.typ` file.
 
@@ -282,6 +282,6 @@ Paste LaTeX-style (BibLaTeX) references into the included `refs.bib`, or switch 
 
 You can keep this file in the project while removing it from `main.typ` if you want to keep it as a reference.
 
-Keep in mind that this template may receive new features in the future. This will be influenced, in part, by the evolution of both the package ecosystem and Typst itself. Just like with your other imported packages, you can update the `thesist` version number in your `.typ` files. Instructions will be given on this template's changelogs if you need to take any extra steps after that.
+Keep in mind that this template may receive new features in the future. This will be influenced, in part, by the evolution of both the package ecosystem and Typst itself. Just like with your other imported packages, you can update the `thesist` version number in your `.typ` files. Instructions will be given on the new version's changelog if you need to take any extra steps after that.
 
 *Feel free to contribute to this package's repository if you so wish.*

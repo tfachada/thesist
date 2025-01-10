@@ -46,4 +46,4 @@ This template is not necessarily a finished product. Contributions are welcome!
 
 Thanks to the Typst online community members for the help in some of the functionalities, and for the extensions used here.
 
-The IST logo and the default cover images used in this template are under copyright of Instituto Superior Técnico, and shall not be used for non-professional purposes or by people outside of the institution without its express authorization. The third-party stock image used in the quick guide is available, with terms included, [here](https://pixabay.com/photos/m31-space-astronomy-astronomical-3613931).
+The IST logo and the default cover images used in this template are under copyright of Instituto Superior Técnico, and shall not be used for non-professional purposes or by people outside of the institution without its express authorization.
