@@ -3,8 +3,6 @@
 
 = Another appendix
 
-#lorem(300)
-
 @appendix-figure and @appendix-subfigure-grid (composed of subfigures @appendix-subfigure-left[] and @appendix-subfigure-right[]) are example appendix figures.
 
 #figure(
