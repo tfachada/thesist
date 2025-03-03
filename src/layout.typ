@@ -184,12 +184,21 @@
   show heading.where(level: 2): set text(size: 14pt)
   show heading.where(level: 3): set text(size: 12pt)
 
-  // Appendix state variable
+  // Appendix state variable (see subfigure-grid in utils.typ, and heading style selection code in this file)
   let after-refs = state("after-refs", none)
   after-refs.update(false)
   show bibliography: it => {
     it
     after-refs.update(true)
+  }
+
+  // Outline state variable (see flex-caption in utils.typ)
+  let in-outline = state("in-outline", none)
+  in-outline.update(false)
+  show outline: it => {
+    in-outline.update(true)
+    it
+    in-outline.update(false)
   }
 
   // Set heading style for chapters/appendices, using the appendix state variable
@@ -227,34 +236,54 @@
   // Bookmark outlines (indices) in the generated PDF
   show outline: set heading(bookmarked: true)
 
-  // Make the Lists of Figures/Tables/... more concise and easier to read, like in the LaTeX templates
-  show outline.entry: it => context {
-    if it.element.has("kind") {
-      let loc = it.element.location()
+  // Spacing of outline entries
+  show outline.entry: set block(below: 1.2em)
 
-      if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 {
+  // Customization of outline entries by type
+  show outline.entry: it => context {
+
+    // 1 - Figure entries
+    if it.element.has("kind") {
+
+      let loc = it.element.location()
+      let entry-number = it.prefix().children.at(2)
+
+      if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 and entry-number != [1.1] {
         v(1em)
       }
 
       show link: set text(rgb("000000"))
+
       link(loc,
-        box(it.body.children.at(2), width: 2.6em) // figure number
-        + it.body.children.slice(4).join()        // figure caption
-        + box(it.fill, width: 1fr)
-        + it.page
+        it.indented(
+          entry-number,
+          it.body() + box(it.fill, width: 1fr) + it.page()
+        )
       )
-    } else {
+
+    }
+
+    // 2 - New chapter entries
+    else if it.level == 1 {
+
+      if it.prefix() != [1] {v(1em)}
+
+      set text(weight: "bold")
+      show link: set text(rgb("000000"))
+
+      link(it.element.location(),
+        it.indented(
+          it.prefix(),
+          it.body() + h(1fr) + it.page()
+        )
+      )
+
+    }
+
+    // 3 - All other entries
+    else {
       it
     }
-  }
-
-  // Allow a caption in an outline to receive different treatment from the original (see flex-caption in utils.typ)
-  let in-outline = state("in-outline", none)
-  in-outline.update(false)
-  show outline: it => {
-    in-outline.update(true)
-    it
-    in-outline.update(false)
   }
 
   // Chapter-relative numbering for figures (see figure-numbering.typ)
@@ -366,20 +395,11 @@
   }
 
   // Main outline
-  {
-    show outline.entry.where(level: 1): it => {
-      set text(weight: "bold")
-      set outline(fill: none)
-      v(12pt)
-      show link: set text(rgb("000000"))
-      link(it.element.location(), it.body + h(1fr) + it.page)
-    }
-    if not hide-outline {
-      outline(
-        title: STRING_OUTLINE,
-        indent: auto
-      )
-    }
+  if not hide-outline {
+    outline(
+      title: STRING_OUTLINE,
+      indent: auto
+    )
   }
 
   // Outlines for figure() content

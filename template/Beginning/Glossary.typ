@@ -3,7 +3,7 @@
   https://github.com/typst-community/glossarium
 */
 
-#import "@preview/glossarium:0.5.1": make-glossary, register-glossary, print-glossary
+#import "@preview/glossarium:0.5.4": make-glossary, register-glossary, print-glossary
 
 #show: make-glossary
 

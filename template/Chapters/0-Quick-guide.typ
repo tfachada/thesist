@@ -2,7 +2,7 @@
 #import "@preview/thesist:1.0.0": flex-caption, subfigure-grid
 
 // Always use a glossary package, too!
-#import "@preview/glossarium:0.5.1": gls, glspl
+#import "@preview/glossarium:0.5.4": gls, glspl
 
 // Optionally use more packages, depending on the chapter's needs. In the case of this chapter, we will also import this:
 #import "@preview/codly:1.2.0": *
