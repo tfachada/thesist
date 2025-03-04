@@ -202,6 +202,7 @@
   }
 
   // Set heading style for chapters/appendices, using the appendix state variable
+  // (for the heading functions, see heading-styles.typ)
   show heading.where(level: 1): it => {
     if no-pagebreaks == false {
       pagebreak(to: "odd", weak: true)
@@ -287,7 +288,12 @@
   }
 
   // Chapter-relative numbering for figures (see figure-numbering.typ)
+  // (user can repeat this command with "A.1" for appendices)
   show: set-figure-numbering.with(new-format: "1.1")
+
+  // Additional setup for said numbering (see figure-numbering.typ)
+  // (only used once)
+  show: figure-counter-resets
 
   // Gap between figure and caption
   set figure(gap: 1em)
@@ -312,7 +318,7 @@
   /*
     Note: Per IST rules, the line spacing needs to be "1.5 lines". The definition of line spacing is very ambiguous across platforms, and "1.05em" recreates the 1.5 of the LaTeX templates (or misses it by a microscopic amount). Note that "em" means the font size.
 
-    This kind of ambiguous conventions should not be overthought, as the rabbit hole runs deeper and also raises questions about LaTeX. For instance, you can see that Overleaf doesn't render the exact font size when you use Inspect Element, contrary to Typst.
+    This kind of ambiguous convention should not be overthought, as the rabbit hole runs deeper and also raises questions about LaTeX. For instance, you can see that Overleaf doesn't render the exact font size when you use Inspect Element, contrary to Typst.
   */
   set par(
     justify: true,
@@ -320,13 +326,19 @@
     leading: 1.05em,
     spacing: 1.05em
   )
-  set block(spacing: 2.5em)
-  set list(indent: 2em)
 
-  // Size and line spacing of footnotes (.7 font size = 1 "line"; explanation above)
+  // Size and line spacing of footnotes (.7em = 1 "line"; explanation above)
   show footnote.entry: set text(size: 9pt)
-  set footnote.entry(gap: .7em)
   show footnote.entry: set par(leading: .7em)
+  set footnote.entry(gap: .7em)
+
+  // Miscellaneous vertical spacing
+  set block(spacing: 2.5em)
+
+  // Default indentation for bullets/enumerations/terms
+  set list(indent: 1.5em)
+  set enum(indent: 1.5em)
+  set terms(indent: 1.5em)
 
 
   /* POST-COVER CONTENT */
@@ -397,13 +409,13 @@
   // Main outline
   if not hide-outline {
     outline(
-      title: STRING_OUTLINE,
-      indent: auto
+      title: STRING_OUTLINE
     )
   }
 
   // Outlines for figure() content
   {
+    // Auto-hide if there is nothing to index
     show outline: it => {
       context if query(selector(it.target).after(here())).len() == 0 {}
       else{it}
@@ -451,7 +463,7 @@
   /* FRONT MATTER ENDS HERE */
 
 
-  // "Figure x:" in bold
+  // "Figure x.y:" in bold
   // (putting this down here to avoid breaking the glossary)
   show figure.caption: it => {
     let sup = if it.supplement != none [#it.supplement~]
