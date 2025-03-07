@@ -338,7 +338,7 @@
   // Default indentation for bullets/enumerations/terms
   set list(indent: 1.5em)
   set enum(indent: 1.5em)
-  set terms(indent: 1.5em)
+  set terms(indent: 1.5em, hanging-indent: 0em)
 
 
   /* POST-COVER CONTENT */
