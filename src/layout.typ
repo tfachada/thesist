@@ -285,11 +285,7 @@
     }
   }
 
-  // Chapter-relative numbering for figures (see figure-numbering.typ)
-  // (user can repeat this command with "A.1" for appendices)
-  show: set-figure-numbering.with(new-format: "1.1")
-
-  // Additional setup for said numbering
+  // Make figure and equation numbering reset on every chapter
   show heading.where(level: 1): it => {
     it
     counter(figure.where(kind: image)).update(0)
@@ -298,6 +294,10 @@
     counter(figure.where(kind: "algorithm")).update(0)
     counter(math.equation).update(0)
   }
+
+  // Make said numbering refer to the chapter number (see figure-numbering.typ)
+  // (user can repeat this command with "A.1" for appendices)
+  show: set-figure-numbering.with(new-format: "1.1")
 
   // Gap between figure and caption
   set figure(gap: 1em)
