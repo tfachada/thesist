@@ -117,9 +117,7 @@
 
     par(text(16pt, strong(title)))
 
-    if subtitle != none {
-      text(14pt, subtitle)
-    }
+    text(14pt, subtitle)
 
     v(1fr)
 
@@ -291,9 +289,15 @@
   // (user can repeat this command with "A.1" for appendices)
   show: set-figure-numbering.with(new-format: "1.1")
 
-  // Additional setup for said numbering (see figure-numbering.typ)
-  // (only used once)
-  show: figure-counter-resets
+  // Additional setup for said numbering
+  show heading.where(level: 1): it => {
+    it
+    counter(figure.where(kind: image)).update(0)
+    counter(figure.where(kind: table)).update(0)
+    counter(figure.where(kind: raw)).update(0)
+    counter(figure.where(kind: "algorithm")).update(0)
+    counter(math.equation).update(0)
+  }
 
   // Gap between figure and caption
   set figure(gap: 1em)
