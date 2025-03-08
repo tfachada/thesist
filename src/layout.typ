@@ -375,7 +375,7 @@
   // Abstracts and keywords
   {
     // For the Keywords heading. Only applies in this scope.
-    show heading.where(level: 2): set text(size: 21pt)
+    show heading.where(level: 2): set text(size: 20pt)
 
     // English
     let abstract-en = {

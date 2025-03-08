@@ -22,14 +22,13 @@
   {
     set align(right+horizon)
     {
-      set text(size: 6cm, font: "TeX Gyre Bonum")
-      h(3cm)
+      set text(size: 150pt, font: "TeX Gyre Bonum")
       counter(heading).display()
     }
     {
       set text(size: 25pt)
       linebreak()
-      v(1cm)
+      v(1em)
       it.body
     }
   }
@@ -48,9 +47,11 @@
 
       if last_elem != none {
 
-        block(text(outline-title, size: 21pt), above: 0pt, below: 0pt)
+        block(text(outline-title, size: 18pt), above: 0em, below: 0em)
 
         set text(size: 10pt)
+        v(-1em)
+
         block(line(length: 100%), below: 1.5em)
 
         outline(
