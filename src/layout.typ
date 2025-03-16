@@ -342,7 +342,6 @@
   // Default indentation for bullets/enumerations/terms
   set list(indent: 1.5em)
   set enum(indent: 1.5em)
-  set terms(indent: 1.5em, hanging-indent: 0em)
 
 
   /* POST-COVER CONTENT */
@@ -375,7 +374,7 @@
   // Abstracts and keywords
   {
     // For the Keywords heading. Only applies in this scope.
-    show heading.where(level: 2): set text(size: 20pt)
+    show heading.where(level: 2): set text(size: 18pt)
 
     // English
     let abstract-en = {
