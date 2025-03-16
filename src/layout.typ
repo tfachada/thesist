@@ -43,10 +43,12 @@
 
   /* STRINGS BY LANGUAGE */
 
+  // Note: Not using the linguify package instead due to:
+  // - https://github.com/typst-community/linguify/issues/23
+  //  - Based on upstream: https://github.com/typst/typst/issues/3424
+
   let STRING_BEFORE_DEGREE = "Thesis to obtain the Master of Science Degree in"
-  if pic-mode {
-    STRING_BEFORE_DEGREE = "Integrated Project to obtain the Master of Science Degree in"
-  }
+  let STRING_BEFORE_DEGREE_PIC = "Integrated Project to obtain the Master of Science Degree in"
   let STRING_SUPERVISOR = "Supervisor: "
   let STRING_SUPERVISORS = "Supervisors: "
   let STRING_COMMITTEE = "Examination Committee"
@@ -68,9 +70,7 @@
 
   if lang == "pt" {
     STRING_BEFORE_DEGREE = "Dissertação para obtenção do Grau de Mestre em"
-    if pic-mode {
-      STRING_BEFORE_DEGREE = "Projeto Integrador para obtenção do grau de Mestre em"
-    }
+    STRING_BEFORE_DEGREE_PIC = "Projeto Integrador para obtenção do grau de Mestre em"
     STRING_SUPERVISOR = "Orientador: "
     STRING_SUPERVISORS = "Orientadores: "
     STRING_COMMITTEE = "Júri"
@@ -89,10 +89,6 @@
     STRING_CODE = "Código"
     STRING_CHAPTER = "Capítulo"
     STRING_APPENDIX = "Apêndice"
-  }
-
-  if string-before-degree != none {
-    STRING_BEFORE_DEGREE = string-before-degree
   }
 
 
@@ -125,7 +121,15 @@
 
     v(1fr)
 
-    par(text(12pt, STRING_BEFORE_DEGREE))
+    if string-before-degree != none {
+      par(text(12pt, string-before-degree))
+    }
+    else if pic-mode {
+      par(text(12pt, STRING_BEFORE_DEGREE_PIC))
+    }
+    else {
+      par(text(12pt, STRING_BEFORE_DEGREE))
+    }
 
     text(16pt, strong(degree))
 
