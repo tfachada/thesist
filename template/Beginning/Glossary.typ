@@ -1,5 +1,5 @@
 /*
-  Glossarium is the default glossary package of this template (you can use another if you want). If you have any doubts related to glossarium after reading the quick guide, you can check its documentation at:
+  Glossarium is the default glossary package of this template (you can use another if you want). If you have any doubts related to Glossarium after reading the quick guide, you can check its documentation at:
   https://github.com/typst-community/glossarium
 */
 

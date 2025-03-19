@@ -1,13 +1,17 @@
 // It's recommended to always import these!
 #import "@preview/thesist:1.0.0": flex-caption, subfigure-grid
 
-// Always use a glossary package, too!
+// You will usually also want a glossary package.
 #import "@preview/glossarium:0.5.4": gls, glspl
 
 // Optionally use more packages, depending on the chapter's needs. In the case of this chapter, we will also import this:
-#import "@preview/codly:1.2.0": *
-#import "@preview/codly-languages:0.1.4": *
+
 #import "@preview/lovelace:0.3.0": *
+
+// These are not being used for now. See the comment in the "Listings" section for why.
+// #import "@preview/codly:1.2.0": *
+// #import "@preview/codly-languages:0.1.8": *
+
 // Check Typst Universe to look for new packages you might need, and always read their description page to know how to handle them.
 
 = A quick guide to using this template
@@ -76,7 +80,8 @@ Like tables, listings will be automatically interpreted as their own kind of fig
   ```
 ]
 
-Optionally, you can use a package like #link("https://typst.app/universe/package/codly")[`codly`] for some extra formatting:
+/*
+Optionally, you can use a package like #link("https://typst.app/universe/package/codly")[Codly] for some extra formatting:
 
 #show: codly-init.with()
 #codly(languages: codly-languages)
@@ -94,6 +99,10 @@ Optionally, you can use a package like #link("https://typst.app/universe/package
 #codly-disable()
 
 *Note:* This is just an example. To know how to use a certain package to its full extent, including any that is used in this guide, be sure to read its documentation.
+*/
+
+// NOTE: Version 1.2.0 of Codly still uses a deprecated feature, which produces a warning in Typst 0.13 and will be removed in Typst 0.14. Use this package with caution or wait for its next version.
+// When the next version comes out, this quick guide will reinclude it.
 
 === Algorithms
 
@@ -114,7 +123,7 @@ You can define an algorithm with `raw text`:
   ```
 ]
 
-Or use a package like #link("https://typst.app/universe/package/lovelace")[`lovelace`] to make it fancier:
+Or use a package like #link("https://typst.app/universe/package/lovelace")[Lovelace] to make it fancier:
 
 #figure(
   kind: "algorithm",
@@ -157,7 +166,7 @@ $
 
 == Content subfigures
 
-Subfigures, despite not being native to Typst yet, are implemented in this template via the function `subfigure-grid`. This is a slightly modified version of the `grid` function of the #link("https://typst.app/universe/package/subpar")[`subpar`] package for subfigures. The modifications allow it to work with the numbering used by figures in this template.
+Subfigures, despite not being native to Typst yet, are implemented in this template via the function `subfigure-grid`. This is a slightly modified version of the `grid` function of the #link("https://typst.app/universe/package/subpar")[Subpar] package for subfigures. The modifications allow it to work with the numbering used by figures in this template.
 
 This is `subfigure-grid` in action:
 
@@ -250,7 +259,7 @@ Contrary to normal figures, subfigure grids don't automatically detect the `kind
 
 @subfigure-grid-example-listing, composed of Listings @sub-left-example-listing[] and @sub-right-example-listing[], is not being treated as an image figure, thanks to `kind: raw`.
 
-If you have any other doubts about how to use subfigures, be sure to check the documentation of the `subpar` package.
+If you have any other doubts about how to use subfigures, be sure to check the documentation of the Subpar package.
 
 == Flexible captions
 
@@ -268,7 +277,7 @@ Look now at the image index back at the beginning of the thesis, and see the cap
 
 == Using the Glossary
 
-This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[`glossarium`] package. With it, you use `#gls()` for singular forms and `#glspl()` for plural forms. Some example references are #gls("mu_0"), #glspl("potato"), #glspl("DM") and #gls("IST"). The latter two become just #glspl("DM") and #gls("IST") by default after their first usage. Be aware that glossary terms typically don't show up in the glossary until you reference them!
+This template's Glossary feature is implemented by default with the #link("https://typst.app/universe/package/glossarium")[Glossarium] package. With it, you use `#gls()` for singular forms and `#glspl()` for plural forms. Some example references are #gls("mu_0"), #glspl("potato"), #glspl("DM") and #gls("IST"). The latter two become just #glspl("DM") and #gls("IST") by default after their first usage. Be aware that glossary terms typically don't show up in the glossary until you reference them!
 
 Glossary entries and titles are set up in the `Glossary.typ` file.
 
