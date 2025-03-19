@@ -343,7 +343,7 @@
   // Miscellaneous vertical spacing
   set block(spacing: 2.5em)
 
-  // Default indentation for bullets/enumerations/terms
+  // Default indentation for bullets and enumerations
   set list(indent: 1.5em)
   set enum(indent: 1.5em)
 
