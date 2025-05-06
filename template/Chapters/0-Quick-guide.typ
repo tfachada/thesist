@@ -2,16 +2,12 @@
 #import "@preview/thesist:1.0.1": flex-caption, subfigure-grid
 
 // You will usually also want a glossary package.
-#import "@preview/glossarium:0.5.4": gls, glspl
+#import "@preview/glossarium:0.5.6": gls, glspl
 
 // Optionally use more packages, depending on the chapter's needs. In the case of this chapter, we will also import this:
-
+#import "@preview/codly:1.3.0": *
+#import "@preview/codly-languages:0.1.8": *
 #import "@preview/lovelace:0.3.0": *
-
-// These are not being used for now. See the comment in the "Listings" section for why.
-// #import "@preview/codly:1.2.0": *
-// #import "@preview/codly-languages:0.1.8": *
-
 // Check Typst Universe to look for new packages you might need, and always read their description page to know how to handle them.
 
 = A quick guide to using this template
@@ -80,7 +76,6 @@ Like tables, listings will be automatically interpreted as their own kind of fig
   ```
 ]
 
-/*
 Optionally, you can use a package like #link("https://typst.app/universe/package/codly")[Codly] for some extra formatting:
 
 #show: codly-init.with()
@@ -99,10 +94,6 @@ Optionally, you can use a package like #link("https://typst.app/universe/package
 #codly-disable()
 
 *Note:* This is just an example. To know how to use a certain package to its full extent, including any that is used in this guide, be sure to read its documentation.
-*/
-
-// NOTE: Version 1.2.0 of Codly still uses a deprecated feature, which produces a warning in Typst 0.13 and will be removed in Typst 0.14. Use this package with caution or wait for its next version.
-// When the next version comes out, this quick guide will reinclude it.
 
 === Algorithms
 
