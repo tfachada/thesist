@@ -251,8 +251,8 @@
       let loc = it.element.location()
       let entry-number = it.prefix().children.at(2)
 
-      if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 and entry-number != [1.1] {
-        v(1em)
+      if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 {
+        v(10pt)
       }
 
       show link: set text(rgb("000000"))
@@ -269,7 +269,7 @@
     // 2 - New chapter entries
     else if it.level == 1 {
 
-      if it.prefix() != [1] {v(1em)}
+      v(10pt)
 
       set text(weight: "bold")
       show link: set text(rgb("000000"))
@@ -413,20 +413,25 @@
     }
   }
 
-  // Main outline
-  if not hide-outline {
-    outline(
-      title: STRING_OUTLINE
-    )
-  }
-
-  // Outlines for figure() content
+  // Outlines
   {
-    // Auto-hide if there is nothing to index
+    // Make up for the added vertical space before the first entry
+    show heading: it => it + v(-10pt)
+
+    // Main outline
+    if not hide-outline {
+      outline(
+        title: STRING_OUTLINE
+      )
+    }
+
+    // Auto-hide figure outlines if there is nothing to index
     show outline: it => {
       context if query(selector(it.target).after(here())).len() == 0 {}
       else{it}
     }
+
+    // Figure outlines, if not manually hidden:
 
     if not hide-figure-list {
       outline(
