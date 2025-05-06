@@ -1,6 +1,6 @@
 // Import subfigure package and make it work with the chapter-relative numbering
 
-#import "@preview/subpar:0.2.1"
+#import "@preview/subpar:0.2.2"
 
 #let subfigure-grid(..args) = context {
 
