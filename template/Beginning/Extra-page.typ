@@ -11,7 +11,7 @@
       _#lorem(20)_
       #linebreak()
       #linebreak()
-      \- Lorem I. Dolor
+      --- Lorem I. Dolor
     ]
   )
 )
