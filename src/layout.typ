@@ -322,6 +322,9 @@
   show link: set text(rgb("696969"))
   show ref: set text(rgb("696969"))
 
+  // Exception to the ref color rule, for footnote repetitions
+  show footnote: set text(fill: black)
+
   // Justification and spacing of main text
   /*
     Note: Per IST rules, the line spacing needs to be "1.5 lines". The definition of line spacing is very ambiguous across platforms, and "1.05em" recreates the 1.5 of the LaTeX templates (or misses it by a microscopic amount). Note that "em" means the font size.
