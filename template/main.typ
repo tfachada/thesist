@@ -10,7 +10,7 @@
   lang: "en",
 
   cover-image: image("Images/default-alameda.jpg"),
-  // cover-image: image("Images/default-taguspark.jpg", height: 4cm),
+  // cover-image: image("Images/default-taguspark.jpg"),
   // *
 
   title: "This is the Title of the Thesis and it is a very Big Title covering More than One Line",
