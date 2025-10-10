@@ -100,15 +100,22 @@
     dy: -.5cm
   )
 
-  v(2fr)
+  // v(2fr)
+  // context v(measure(image("IST.png", width: 5cm)).at("height") - .5cm)
+  // v(1.45cm)
+  // v(1fr)
 
   align(center,{
 
     set par(leading: .7em)
 
     if cover-image != none {
+      v(1.45cm) + v(1fr)
       cover-image
       v(1fr)
+    }
+    else {
+      v(2fr)
     }
 
     par(text(16pt, strong(title)))
