@@ -31,6 +31,7 @@
   hide-code-list: false,
   no-pagebreaks: false,
   included-content: none,
+  printable: false,
   body
 ) = {
 
@@ -500,4 +501,18 @@
 
   // Ready
   body
+
+  // Optional spine
+  // Note: Using larger margins to prevent centered text from overflowing into logo
+  if printable {
+    set page(footer: none, margin: (x: 5cm), flipped: true)
+    place(horizon, dx: -3cm, image("IST.png", width: 2.5cm))
+    align(horizon + center,
+      text(12pt, strong(title)) +
+      linebreak() +
+      text(10pt, subtitle) +
+      linebreak() +
+      text(size: 10pt, strong(author))
+    )
+  }
 }

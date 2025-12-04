@@ -38,8 +38,11 @@
   // *- Define as "none" (without quotation marks) if unneeded
 
 
-  // Optional extra page to show before the acknowledgments. Use it if you want to include a special dedication, quote, etc. Comment or set to none to ignore.
+  // [Optional] Extra page to show before the acknowledgments. Use it if you want to include a special dedication, quote, etc. Comment or set to none to ignore.
   extra-page: include("Beginning/Extra-page.typ"),
+
+  // [Optional] Add a spine at the end of the document if you want to print your thesis.
+  printable: false,
 
 
   // Set the chapter heading style
