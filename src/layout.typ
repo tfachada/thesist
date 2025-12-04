@@ -509,10 +509,13 @@
     place(horizon, dx: -3cm, image("IST.png", width: 2.5cm))
     align(horizon + center,
       text(12pt, strong(title)) +
-      linebreak() +
-      text(10pt, subtitle) +
-      linebreak() +
-      text(size: 10pt, strong(author))
+      if subtitle != none {
+        linebreak() + text(10pt, subtitle)
+      }
+      else {
+        none
+      } +
+      linebreak() + text(size: 10pt, strong(author))
     )
   }
 }
