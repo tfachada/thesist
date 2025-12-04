@@ -1,10 +1,12 @@
 #import "@preview/thesist:1.0.2": thesis, set-figure-numbering
 
+/* SCROLL TO THE BOTTOM TO ADD CHAPTERS */
+
 /* INIT THESIS */
 // Set language to en/pt
 // Setup title page
 // Pick heading styles
-// Further customizations available for PIC2 reports
+// Further customizations if needed
 #show: thesis.with(
 
   lang: "en",
@@ -38,13 +40,6 @@
   // *- Define as "none" (without quotation marks) if unneeded
 
 
-  // [Optional] Extra page to show before the acknowledgments. Use it if you want to include a special dedication, quote, etc. Comment or set to none to ignore.
-  extra-page: include("Beginning/Extra-page.typ"),
-
-  // [Optional] Add a spine at the end of the document if you want to print your thesis.
-  printable: false,
-
-
   // Set the chapter heading style
   // Options:
   //  - "fancy": Full page - <chapter number> + <chapter title> + <chapter outline>
@@ -58,6 +53,27 @@
   //  - "simple": Multi line - Appendix <appendix letter> + <appendix title>
   //  - "short": Single line - <appendix letter> + <appendix title>
   appendix-style: "simple",
+
+
+  // Miscellaneous settings
+  // Note: These are grey areas in the formatting requirements, and tend to vary by degree. Most of the times they will not be needed.
+
+    // If another university is involved, you may need to add its logo
+    second-logo: none,
+
+    // Extra initial page(s) or content. Some use cases:
+    //    - Prefaces (only if required!)
+    //    - Custom declarations (only if required!)
+    //    - Custom document formatting, if it doesn't break the rules
+    //    - Short dedications or quotes
+    // Comment or set to none to ignore.
+    extra-page: include("Beginning/Extra.typ"),
+
+    // Uncomment if using a custom declaration
+    // hide-declaration: true,
+
+    // Add a spine at the end of the document if you want to print your thesis
+    printable: false,
 
 
   // PIC2 settings

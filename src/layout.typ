@@ -4,6 +4,7 @@
 
 #let thesis(
   lang: none,
+  second-logo: none,
   cover-image: none,
   title: none,
   subtitle: none,
@@ -101,6 +102,13 @@
     dy: -.5cm
   )
 
+  place(
+    second-logo,
+    dx: +.5cm,
+    dy: -.5cm,
+    end
+  )
+
   v(2fr)
 
   align(center,{
@@ -181,7 +189,6 @@
   /* POST-COVER CONTENT FORM SETUP */
 
   // Set heading sizes and spacings
-  set heading(numbering: "1.1")
   show heading: set block(above: 2.5em, below: 1.5em)
   show heading.where(level: 1): set text(size: 25pt)
   show heading.where(level: 2): set text(size: 14pt)
@@ -352,7 +359,10 @@
   set enum(indent: 1.5em)
 
 
-  /* POST-COVER CONTENT */
+  /* FRONT MATTER */
+
+  // Prevent front matter headings from showing up in outlines
+  set heading(outlined: false)
 
   // Initial page numbering
   set page(
@@ -364,18 +374,18 @@
   )
   counter(page).update(1)
 
+  // Extra pages
+  extra-page
+
   // Declaration page
   if not hide-declaration {
-    heading(STRING_DECLARATION_TITLE, numbering: none, outlined: false)
+    heading(STRING_DECLARATION_TITLE)
     text(STRING_DECLARATION_BODY)
   }
 
-  // Optional extra page
-  extra-page
-
   // Acknowledgments page (recall the included-content array from main.typ)
   if not hide-acknowledgments {
-    heading(STRING_ACKNOWLEDGMENTS, numbering: none, outlined: false, bookmarked: true)
+    heading(STRING_ACKNOWLEDGMENTS, bookmarked: true)
     included-content.at(0)
   }
 
@@ -387,10 +397,10 @@
     // English
     let abstract-en = {
       if not hide-abstract-en {
-        heading("Abstract", numbering: none, outlined: false, bookmarked: true)
+        heading("Abstract", bookmarked: true)
         included-content.at(1)
         v(1cm)
-        heading("Keywords", level: 2, numbering: none, outlined: false)
+        heading("Keywords", level: 2)
         included-content.at(2)
       }
     }
@@ -398,10 +408,10 @@
     // Portuguese
     let abstract-pt = {
       if not hide-abstract-pt {
-        heading("Resumo", numbering: none, outlined: false, bookmarked: true)
+        heading("Resumo", bookmarked: true)
         included-content.at(3)
         v(1cm)
-        heading("Palavras Chave", level: 2, numbering: none, outlined: false)
+        heading("Palavras Chave", level: 2)
         included-content.at(4)
       }
     }
@@ -468,7 +478,7 @@
 
   // Glossary
   {
-    set heading(numbering: none, outlined: false, bookmarked: true)
+    set heading(bookmarked: true)
     included-content.at(5)
   }
 
@@ -488,6 +498,9 @@
     }
     strong(sup + num + it.separator) + it.body
   }
+
+  // Set chapter numbering
+  set heading(numbering: "1.1", outlined: true)
 
   // Reset page numbering in Arabic numerals
   set page(
