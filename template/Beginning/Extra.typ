@@ -1,26 +1,28 @@
 // Example optional page
-#set text(size: 12pt)
+#{
+  set text(size: 12pt)
 
-#v(25%)
+  v(25%)
 
-#align(right,
-  box(width: 75%,
+  align(right,
+    box(width: 75%,
+      [
+        _#lorem(20)_
+        #linebreak()
+        #linebreak()
+        --- Lorem I. Dolor
+      ]
+    )
+  )
+
+  align(bottom+center,
     [
-      _#lorem(20)_
-      #linebreak()
-      #linebreak()
-      --- Lorem I. Dolor
+      This work was created using the Typst typesetting language.
     ]
   )
-)
 
-#align(bottom+center,
-  [
-    This work was created using the Typst typesetting language.
-  ]
-)
-
-#v(10%)
+  v(10%)
+}
 
 // Example preface - USE ONLY IF REQUIRED
 = Preface
