@@ -30,7 +30,7 @@ In addition to the miscellaneous settings, `main.typ` also includes PIC2-related
 
 This template also includes the option to typeset the spine of the thesis in the rare case that it is printed as a book with cover (no other template has been known to implement this). While there are technically rules for how to do this formatting, they are contradictory on close inspection. As such this is not considered a "formal" feature, instead implementing what was perceived to be the most likely intention.
 
-**If none of the settings changes what you want:** First see if you can add the code yourself (for example, a `#pagebreak()` inside one of your sections); if this still doesn't solve it, feel free to open an issue or a pull request.
+If none of the settings changes what you want: First see if you can add the code yourself (for example, a `#pagebreak()` inside one of your sections); if this still doesn't solve it, feel free to open an issue or a pull request.
 
 ### My PIC template looks nothing like this one!
 
