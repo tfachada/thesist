@@ -2,7 +2,7 @@
 
 ThesIST (pronounced "desist") is an unofficial Master's thesis template for Instituto Superior Técnico written in Typst.
 
-This template fully meets the official formatting requirements as outlined [here](https://tecnico.ulisboa.pt/files/2021/09/guia-disserta-o-mestrado.pdf), and also attempts to follow most unwritten conventions. Regardless, you can be on the lookout for things you may want to see added.
+By default, this template fully meets the official formatting requirements as outlined [here](https://tecnico.ulisboa.pt/files/2021/09/guia-disserta-o-mestrado.pdf), and most unwritten conventions are followed. Regardless, you can be on the lookout for things you may want to see added.
 
 PIC2 reports with a thesis-like format are also supported, with options to change or hide some parts.
 
@@ -20,13 +20,21 @@ If you want to compile your thesis offline, make sure you have the following fon
 
 ## FAQ
 
+### Is this template universal?
+
+It tries to be.
+
+While there are general guidelines that apply to the vast majority of IST theses, and that this template respects out of the box, on some specific degrees or supervisions you may be asked to add extra content. For example, MEBiol students are typically required to include a preface before the declaration. To allow for the use in such cases, this template includes a set of miscellaneous settings that can be adjusted from `main.typ`.
+
+In addition to the miscellaneous settings, `main.typ` also includes PIC2-related settings, since thesis-like PIC2 reports have been known to deviate from the thesis in format in various minor forms. If your report is supposed to diverge in a major form, see the next FAQ.
+
+This template also includes the option to typeset the spine of the thesis in the rare case that it is printed as a book with cover (no other template has been known to implement this). While there are technically rules for how to do this formatting, they are contradictory on close inspection. As such this is not considered a "formal" feature, instead implementing what was perceived to be the most likely intention.
+
+**If none of the settings changes what you want:** First see if you can add the code yourself (for example, a `#pagebreak()` inside one of your sections); if this still doesn't solve it, feel free to open an issue or a pull request.
+
 ### My PIC template looks nothing like this one!
 
 Contrary to the thesis itself, the PIC2 doesn't have a universal format or ruleset. Use the template you're given (or port it to Typst yourself) if it's too different from this one. You can then come back to this one when you're writing your thesis document, which will have this format for sure.
-
-### My PIC template looks like this one, but I can't fully replicate it because X.
-
-Take a good look at *all* the setting variables there are in `main.typ`. If none of them changes what you want: first see if you can add the code yourself (for example, a `#pagebreak()` inside one of your sections); if this still doesn't solve it, feel free to open an issue or a pull request.
 
 ### Why is some of the front matter structure imported from this template's package instead of directly editable?
 
@@ -39,6 +47,10 @@ If you think something isn't editable by the user but should, feel free to open 
 Be sure to keep checking the quick guide and, if needed, Typst's documentation and online help channels.
 
 The known breaking changes introduced by any new version of this package will always be registered in its changelog, with instructions on what to change. Always check the changelogs when updating this template's package. They are on [the Releases page](https://github.com/tfachada/thesist/releases).
+
+### Did the author of this template write his own thesis with this?
+
+[Of course.](https://codeberg.org/tfachada/msc-thesis)
 
 ## Final remarks
 

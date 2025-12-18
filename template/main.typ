@@ -47,33 +47,8 @@
   //  - "short": Single line - <chapter number> + <chapter title>
   chapter-style: "fancy",
 
-  // Set the appendix heading style
-  // Options:
-  //  - "fancy": Full page - <Appendix letter> + <appendix title>
-  //  - "simple": Multi line - Appendix <appendix letter> + <appendix title>
-  //  - "short": Single line - <appendix letter> + <appendix title>
+  // Equivalent setting for appendices
   appendix-style: "simple",
-
-
-  // Miscellaneous settings
-  // Note: These are grey areas in the formatting requirements, and tend to vary by degree. Most of the times they will not be needed.
-
-    // If another university is involved, you may need to add its logo
-    second-logo: none,
-
-    // Extra initial page(s) or content. Some use cases:
-    //    - Prefaces (only if required!)
-    //    - Custom declarations (only if required!)
-    //    - Custom document formatting, if it doesn't break the rules
-    //    - Short dedications or quotes
-    // Comment or set to none to ignore.
-    extra-page: include("Beginning/Extra.typ"),
-
-    // Uncomment if using a custom declaration
-    // hide-declaration: true,
-
-    // Add a spine at the end of the document if you want to print your thesis
-    printable: false,
 
 
   // PIC2 settings
@@ -104,6 +79,30 @@
     no-pagebreaks: false,
 
   // End of PIC2 settings
+
+
+  // Miscellaneous settings
+  // Note: These are grey areas in the formatting requirements, and tend to vary by degree. Most of the times they will not be needed.
+
+    // If another university is involved, you may be asked to add its logo
+    second-logo: none,
+
+    /*
+    Extra initial page(s) or content. Some use cases:
+      - Prefaces (only if required!)
+      - Custom declarations (only if required!)
+      - Custom document formatting, if it doesn't break the rules
+      - Short dedications or quotes
+    */
+    // extra-page: include("Beginning/Extra.typ"),
+    extra-page: none,
+
+    // Uncomment if using a custom declaration
+    // hide-declaration: true,
+
+    // Add a spine at the end of the document if you want to print your thesis.
+    // Just an aid. Typesetting the full cover will still be up to you.
+    printable: false,
 
 
   // Don't edit this array. It's used for communication with the package.
