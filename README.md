@@ -46,7 +46,7 @@ If you think something isn't editable by the user but should, feel free to open 
 
 Be sure to keep checking the quick guide and, if needed, Typst's documentation and online help channels.
 
-The known breaking changes introduced by any new version of this package will always be registered in its changelog, with instructions on what to change. Always check the changelogs when updating this template's package. They are on [the Releases page](https://github.com/tfachada/thesist/releases).
+The known breaking changes introduced by any new version of this package will always be registered in its changelog, with instructions on what to change. Always check the changelogs when updating this template's package. They are on [the Releases page](https://codeberg.org/tfachada/thesist/releases).
 
 ### Did the author of this template write his own thesis with this?
 
