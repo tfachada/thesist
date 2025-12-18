@@ -3,7 +3,7 @@
   https://github.com/typst-community/glossarium
 */
 
-#import "@preview/glossarium:0.5.6": make-glossary, register-glossary, print-glossary
+#import "@preview/glossarium:0.5.9": make-glossary, register-glossary, print-glossary
 
 #show: make-glossary
 
@@ -20,14 +20,16 @@
   (
     key: "IST",
     short: "IST",
-    long: "Instituto Superior Técnico"
+    long: "Instituto Superior Técnico",
+    description: "An engineering school"
   ),
 
   (
     key: "DM",
     short: "DM",
     long: "Diagonal Matrix",
-    longplural: "Diagonal Matrices"
+    longplural: "Diagonal Matrices",
+    description: "Matrix which non-zero elements are all in its diagonal"
   ),
 )
 

@@ -2,11 +2,11 @@
 #import "@preview/thesist:1.0.2": flex-caption, subfigure-grid
 
 // You will usually also want a glossary package.
-#import "@preview/glossarium:0.5.6": gls, glspl
+#import "@preview/glossarium:0.5.9": gls, glspl
 
 // Optionally use more packages, depending on the chapter's needs. In the case of this chapter, we will also import this:
 #import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.8": *
+#import "@preview/codly-languages:0.1.10": *
 #import "@preview/lovelace:0.3.0": *
 // Check Typst Universe to look for new packages you might need, and always read their description page to know how to handle them.
 
