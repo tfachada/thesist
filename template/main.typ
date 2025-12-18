@@ -1,4 +1,4 @@
-#import "@preview/thesist:1.0.2": thesis, set-figure-numbering
+#import "@preview/thesist:1.1.0": thesis, set-figure-numbering
 
 /* SCROLL TO THE BOTTOM TO ADD CHAPTERS */
 
